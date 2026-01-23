@@ -15,6 +15,7 @@ export interface Product {
   material: string | null
   dimensions: string | null
   category: string
+  price: number | null
 }
 
 export interface ProductVariant {

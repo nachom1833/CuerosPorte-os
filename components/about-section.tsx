@@ -9,11 +9,12 @@ export function AboutSection() {
                 {/* Section 1: Philosophy - Image Left, Text Right */}
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                     <div className="relative w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden">
-                        <Reveal width="100%">
+                        <Reveal width="100%" className="h-full">
                             <Image
                                 src="/images/lifestyle.png"
                                 alt="Classic leather briefcase on vintage table"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                         </Reveal>
@@ -39,11 +40,12 @@ export function AboutSection() {
                 {/* Section 2: Workshop - Text Left, Image Right */}
                 <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24">
                     <div className="relative w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden">
-                        <Reveal width="100%">
+                        <Reveal width="100%" className="h-full">
                             <Image
                                 src="/images/workshop.png"
                                 alt="Artisan working in leather workshop"
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                         </Reveal>
