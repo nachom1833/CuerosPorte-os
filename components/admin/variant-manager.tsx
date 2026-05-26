@@ -27,6 +27,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
     const [colorName, setColorName] = useState("")
     const [colorHex, setColorHex] = useState("#000000")
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null)
+    const [manualUrls, setManualUrls] = useState("")
 
     async function handleAddVariant() {
         setIsUploading(true)
@@ -41,7 +42,16 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                 }
             }
 
-            // 2. Insertar Variante en Realtime Database
+            // 2. Obtener las URLs o rutas locales ingresadas manualmente
+            if (manualUrls.trim()) {
+                const urls = manualUrls
+                    .split(",")
+                    .map(url => url.trim())
+                    .filter(url => url.length > 0)
+                imageUrls.push(...urls)
+            }
+
+            // 3. Insertar Variante en Realtime Database
             const newRef = push(dbRef(db, "product_variants"))
             await set(newRef, {
                 product_id: productId,
@@ -56,6 +66,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
             setColorName("")
             setColorHex("#000000")
             setSelectedFiles(null)
+            setManualUrls("")
             toast.success("Variante agregada")
             router.refresh() // Refrescar los datos del servidor
 
@@ -102,6 +113,28 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
             
             await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
 
+            toast.success("Imagen asociada exitosamente")
+            router.refresh()
+        } catch (error: any) {
+            toast.error("Error al asociar imagen", { description: error.message })
+        } finally {
+            setUploadingVariantId(null)
+        }
+    }
+
+    // Asociar una URL o ruta manual a una variante existente
+    async function handleAddUrlToVariant(variantId: string, currentImages: string[], urlInput: string) {
+        if (!urlInput.trim()) return
+
+        setUploadingVariantId(variantId)
+        try {
+            const newUrls = urlInput
+                .split(",")
+                .map(url => url.trim())
+                .filter(url => url.length > 0)
+
+            const updatedImages = [...(currentImages || []), ...newUrls]
+            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
             toast.success("Imagen asociada exitosamente")
             router.refresh()
         } catch (error: any) {
@@ -181,6 +214,40 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                                         />
                                     </label>
                                 </div>
+
+                                {/* Formulario para agregar una URL manual a esta variante existente */}
+                                <div className="flex gap-2 max-w-md pt-2">
+                                    <Input
+                                        placeholder="Pegar URL (ej: https://...) o ruta local (ej: /images/...)"
+                                        className="h-8 text-xs bg-background"
+                                        id={`url-input-${variant.id}`}
+                                        onKeyDown={async (e) => {
+                                            if (e.key === "Enter") {
+                                                e.preventDefault();
+                                                const url = e.currentTarget.value.trim();
+                                                if (url) {
+                                                    await handleAddUrlToVariant(variant.id, variant.images || [], url);
+                                                    e.currentTarget.value = "";
+                                                }
+                                            }
+                                        }}
+                                    />
+                                    <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="h-8 text-xs flex-shrink-0 cursor-pointer"
+                                        onClick={async () => {
+                                            const input = document.getElementById(`url-input-${variant.id}`) as HTMLInputElement;
+                                            const url = input?.value?.trim();
+                                            if (url) {
+                                                await handleAddUrlToVariant(variant.id, variant.images || [], url);
+                                                input.value = "";
+                                            }
+                                        }}
+                                    >
+                                        Asociar URL
+                                    </Button>
+                                </div>
                             </div>
                         ))}
                         {variants.length === 0 && <p className="text-sm text-muted-foreground">Aún no hay variantes de color creadas.</p>}
@@ -215,14 +282,24 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <Label>Imágenes (Seleccionar varias)</Label>
-                            <Input
-                                type="file"
-                                multiple
-                                accept="image/*"
-                                onChange={(e) => setSelectedFiles(e.target.files)}
-                            />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <Label>Subir Imágenes Locales</Label>
+                                <Input
+                                    type="file"
+                                    multiple
+                                    accept="image/*"
+                                    onChange={(e) => setSelectedFiles(e.target.files)}
+                                />
+                            </div>
+                            <div>
+                                <Label>O pegar URLs/Rutas de Imagen (Separadas por comas)</Label>
+                                <Input
+                                    placeholder="Ej: https://..., /images/products/file.jpeg"
+                                    value={manualUrls}
+                                    onChange={(e) => setManualUrls(e.target.value)}
+                                />
+                            </div>
                         </div>
                         <Button onClick={handleAddVariant} disabled={isUploading || !colorName} className="w-full">
                             {isUploading ? "Subiendo..." : "Guardar Variante"}
