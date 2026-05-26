@@ -2,11 +2,7 @@ export async function verifySessionToken(token: string | undefined): Promise<{ e
     if (!token) return null;
 
     try {
-        const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-        if (!apiKey) {
-            console.error("Firebase API Key is missing in environment variables.");
-            return null;
-        }
+        const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyCQkv-uSNWHCotMzZUoc6XHvwn82r2-G10"
 
         const response = await fetch(
             `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`,
