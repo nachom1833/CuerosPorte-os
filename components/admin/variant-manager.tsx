@@ -13,6 +13,32 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import Image from "next/image"
 
+function formatImageInput(input: string): string {
+    let trimmed = input.trim();
+    if (!trimmed) return "";
+    
+    // Normalizar barras invertidas a barras diagonales
+    trimmed = trimmed.replace(/\\/g, "/");
+    
+    // Si empieza con "public/images/products/"
+    if (trimmed.startsWith("public/images/products/")) {
+        trimmed = trimmed.substring("public/".length); // queda "images/products/..."
+    }
+    
+    // Asegurar que empiece con barra si es de tipo "images/products/..."
+    if (trimmed.startsWith("images/products/")) {
+        return "/" + trimmed;
+    }
+    
+    // Si ya es una URL externa completa o ruta absoluta, dejarla igual
+    if (trimmed.startsWith("http://") || trimmed.startsWith("https://") || trimmed.startsWith("/")) {
+        return trimmed;
+    }
+    
+    // En otro caso, asumir que es solo el nombre de archivo (ej: "billetera.jpeg")
+    return `/images/products/${trimmed}`;
+}
+
 interface VariantManagerProps {
     productId: string
     variants: ProductVariant[]
@@ -46,7 +72,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
             if (manualUrls.trim()) {
                 const urls = manualUrls
                     .split(",")
-                    .map(url => url.trim())
+                    .map(url => formatImageInput(url))
                     .filter(url => url.length > 0)
                 imageUrls.push(...urls)
             }
@@ -130,7 +156,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         try {
             const newUrls = urlInput
                 .split(",")
-                .map(url => url.trim())
+                .map(url => formatImageInput(url))
                 .filter(url => url.length > 0)
 
             const updatedImages = [...(currentImages || []), ...newUrls]
