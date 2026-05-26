@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase"
-import { collection, query, limit, getDocs } from "firebase/firestore"
+import { ref, get } from "firebase/database"
 import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -7,17 +7,21 @@ import { Product, ProductVariant } from "@/types/database"
 
 export async function FeaturedProducts() {
     // 1. Fetch products (max 4)
-    const productsSnap = await getDocs(query(collection(db, "products"), limit(4)))
-    const products: Product[] = productsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    } as Product))
+    const productsSnap = await get(ref(db, "products"))
+    const productsVal = productsSnap.val() || {}
+    const products: Product[] = Object.keys(productsVal)
+        .slice(0, 4)
+        .map(key => ({
+            id: key,
+            ...productsVal[key]
+        } as Product))
 
     // 2. Fetch active variants
-    const variantsSnap = await getDocs(collection(db, "product_variants"))
-    const variants: ProductVariant[] = variantsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsVal = variantsSnap.val() || {}
+    const variants: ProductVariant[] = Object.keys(variantsVal).map(key => ({
+        id: key,
+        ...variantsVal[key]
     } as ProductVariant))
 
     // 3. Map variants to products

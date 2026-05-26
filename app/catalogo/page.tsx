@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase"
-import { collection, query, where, getDocs } from "firebase/firestore"
+import { ref, get } from "firebase/database"
 import { ProductCard } from "@/components/product-card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
@@ -21,20 +21,22 @@ export default async function CatalogPage({
     const params = await searchParams; // Await params in Next.js 15
     const category = params.category;
 
-    const q = category
-        ? query(collection(db, "products"), where("category", "==", category))
-        : query(collection(db, "products"))
-
-    const productsSnap = await getDocs(q)
-    const rawProducts = productsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+    const productsSnap = await get(ref(db, "products"))
+    const productsVal = productsSnap.val() || {}
+    let rawProducts = Object.keys(productsVal).map(key => ({
+        id: key,
+        ...productsVal[key]
     }))
 
-    const variantsSnap = await getDocs(collection(db, "product_variants"))
-    const rawVariants = variantsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
+    if (category) {
+        rawProducts = rawProducts.filter(p => p.category === category)
+    }
+
+    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsVal = variantsSnap.val() || {}
+    const rawVariants = Object.keys(variantsVal).map(key => ({
+        id: key,
+        ...variantsVal[key]
     })) as any[]
 
     const products = rawProducts.map(p => ({

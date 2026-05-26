@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase"
-import { collection, query, orderBy, getDocs } from "firebase/firestore"
+import { ref, get } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -7,12 +7,14 @@ import { Plus, FileSpreadsheet } from "lucide-react"
 import { Product } from "@/types/database"
 
 export default async function AdminDashboard() {
-    const q = query(collection(db, "products"), orderBy("created_at", "desc"))
-    const productsSnap = await getDocs(q)
-    const products = productsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    })) as Product[]
+    const productsSnap = await get(ref(db, "products"))
+    const productsVal = productsSnap.val() || {}
+    const products = Object.keys(productsVal)
+        .map(key => ({
+            id: key,
+            ...productsVal[key]
+        }))
+        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) as Product[]
 
     return (
         <div className="space-y-6">

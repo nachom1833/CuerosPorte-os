@@ -3,8 +3,8 @@
 import { useState } from "react"
 import type { ProductVariant } from "@/types/database"
 import { db, storage } from "@/lib/firebase"
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
-import { collection, addDoc, doc, deleteDoc, updateDoc } from "firebase/firestore"
+import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"
+import { ref as dbRef, push, set } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -41,16 +41,17 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                     const fileExt = file.name.split('.').pop()
                     const fileName = `${productId}/${Date.now()}-${i}.${fileExt}`
 
-                    const storageRef = ref(storage, `products/${fileName}`)
-                    await uploadBytes(storageRef, file)
-                    const publicUrl = await getDownloadURL(storageRef)
+                    const sRef = storageRef(storage, `products/${fileName}`)
+                    await uploadBytes(sRef, file)
+                    const publicUrl = await getDownloadURL(sRef)
 
                     imageUrls.push(publicUrl)
                 }
             }
 
             // 2. Insert Variant
-            await addDoc(collection(db, "product_variants"), {
+            const newRef = push(dbRef(db, "product_variants"))
+            await set(newRef, {
                 product_id: productId,
                 color_name: colorName,
                 color_hex: colorHex,
@@ -76,7 +77,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
     async function handleDelete(id: string) {
         if (!confirm("¿Seguro que deseas eliminar esta variante?")) return;
         try {
-            await deleteDoc(doc(db, "product_variants", id))
+            await set(dbRef(db, `product_variants/${id}`), null)
             toast.success("Variante eliminada")
             router.refresh()
         } catch (error: any) {
@@ -89,9 +90,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         if (!confirm("¿Deseas eliminar esta imagen de la variante?")) return;
         try {
             const updatedImages = currentImages.filter((_, idx) => idx !== indexToRemove)
-            await updateDoc(doc(db, "product_variants", variantId), {
-                images: updatedImages
-            })
+            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
             toast.success("Imagen eliminada de la variante")
             router.refresh()
         } catch (error: any) {
@@ -108,14 +107,13 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         try {
             const fileExt = file.name.split('.').pop()
             const fileName = `${productId}/${variantId}/${Date.now()}.${fileExt}`
-            const storageRef = ref(storage, `products/${fileName}`)
+            const sRef = storageRef(storage, `products/${fileName}`)
             
-            await uploadBytes(storageRef, file)
-            const publicUrl = await getDownloadURL(storageRef)
+            await uploadBytes(sRef, file)
+            const publicUrl = await getDownloadURL(sRef)
 
-            await updateDoc(doc(db, "product_variants", variantId), {
-                images: [...(currentImages || []), publicUrl]
-            })
+            const updatedImages = [...(currentImages || []), publicUrl]
+            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
 
             toast.success("Imagen agregada con éxito")
             router.refresh()

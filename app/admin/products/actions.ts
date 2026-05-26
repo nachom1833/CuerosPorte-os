@@ -1,7 +1,7 @@
 "use server"
 
 import { db } from "@/lib/firebase"
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore"
+import { ref, push, set, update } from "firebase/database"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
@@ -18,11 +18,12 @@ export async function createProduct(formData: FormData) {
     let generatedId = ""
 
     try {
-        const docRef = await addDoc(collection(db, "products"), {
+        const newRef = push(ref(db, "products"))
+        generatedId = newRef.key || ""
+        await set(newRef, {
             ...product,
             created_at: new Date().toISOString(),
         })
-        generatedId = docRef.id
     } catch (error: any) {
         return { error: error.message }
     }
@@ -43,8 +44,7 @@ export async function updateProduct(id: string, formData: FormData) {
     }
 
     try {
-        const productRef = doc(db, "products", id)
-        await updateDoc(productRef, product)
+        await update(ref(db, `products/${id}`), product)
     } catch (error: any) {
         return { error: error.message }
     }

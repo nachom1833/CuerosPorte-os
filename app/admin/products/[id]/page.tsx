@@ -1,5 +1,5 @@
 import { db } from "@/lib/firebase"
-import { doc, getDoc, collection, query, where, orderBy, getDocs } from "firebase/firestore"
+import { ref, get } from "firebase/database"
 import { notFound } from "next/navigation"
 import { ProductForm } from "@/components/admin/product-form"
 import { VariantManager } from "@/components/admin/variant-manager"
@@ -8,23 +8,21 @@ import { Product, ProductVariant } from "@/types/database"
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
 
-    const productRef = doc(db, "products", id)
-    const productSnap = await getDoc(productRef)
+    const productSnap = await get(ref(db, `products/${id}`))
 
     if (!productSnap.exists()) notFound()
 
-    const product = { id: productSnap.id, ...productSnap.data() } as Product
+    const product = { id: productSnap.key!, ...productSnap.val() } as Product
 
-    const vQ = query(
-        collection(db, "product_variants"),
-        where("product_id", "==", id),
-        orderBy("created_at")
-    )
-    const variantsSnap = await getDocs(vQ)
-    const variants = variantsSnap.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-    })) as ProductVariant[]
+    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsVal = variantsSnap.val() || {}
+    const variants = Object.keys(variantsVal)
+        .map(key => ({
+            id: key,
+            ...variantsVal[key]
+        }))
+        .filter(v => v.product_id === id)
+        .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()) as ProductVariant[]
 
     return (
         <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_350px] gap-6">
