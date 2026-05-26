@@ -1,0 +1,122 @@
+{
+  "products": {
+    "prod_1": {
+      "name": "Bolso de Viaje Porteño",
+      "slug": "bolso-viaje-porteno",
+      "category": "Bolsos",
+      "material": "Cuero Vacuno Flor de 1.8mm",
+      "dimensions": "50cm x 30cm x 25cm",
+      "description": "El compañero perfecto para tus escapadas de fin de semana. Confeccionado enteramente en cuero vacuno premium con herrajes de bronce macizo y costuras reforzadas a mano. Cuenta con un amplio compartimento principal y bolsillos organizadores.",
+      "created_at": "2026-05-22T23:00:00.000Z"
+    },
+    "prod_2": {
+      "name": "Cartera Bandolera Vintage",
+      "slug": "cartera-bandolera-vintage",
+      "category": "Carteras",
+      "material": "Cuero de Curtido Vegetal",
+      "dimensions": "24cm x 18cm x 8cm",
+      "description": "Diseño clásico y funcional con correa ajustable. Un accesorio atemporal fabricado con los mejores cueros seleccionados, ideal para uso diario por su comodidad y sofisticación.",
+      "created_at": "2026-05-22T23:05:00.000Z"
+    },
+    "prod_3": {
+      "name": "Cinturón Clásico de Vestir",
+      "slug": "cinturon-clasico-vestir",
+      "category": "Cinturones",
+      "material": "Cuero de Suela de 4mm",
+      "dimensions": "Ancho: 3.5cm (Talles 85 al 115)",
+      "description": "Cinturón de cuero de una sola pieza sin costuras, pulido a mano y con hebilla de bronce pulido. Durabilidad garantizada de por vida.",
+      "created_at": "2026-05-22T23:10:00.000Z"
+    },
+    "prod_4": {
+      "name": "Billetera Minimalista Porteña",
+      "slug": "billetera-minimalista-portena",
+      "category": "Billeteras",
+      "material": "Cuero de Cabra Curtido al Cromo",
+      "dimensions": "10.5cm x 7.5cm",
+      "description": "Delgada, compacta y ultra resistente. Permite guardar hasta 8 tarjetas y billetes doblados con la menor silueta posible en tu bolsillo.",
+      "created_at": "2026-05-22T23:15:00.000Z"
+    }
+  },
+  "product_variants": {
+    "var_1": {
+      "product_id": "prod_1",
+      "color_name": "Marrón Habanero",
+      "color_hex": "#6B3A1A",
+      "images": [
+        "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:00:00.000Z"
+    },
+    "var_2": {
+      "product_id": "prod_1",
+      "color_name": "Negro Profundo",
+      "color_hex": "#111111",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:01:00.000Z"
+    },
+    "var_3": {
+      "product_id": "prod_2",
+      "color_name": "Suela Natural",
+      "color_hex": "#A0522D",
+      "images": [
+        "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:05:00.000Z"
+    },
+    "var_4": {
+      "product_id": "prod_2",
+      "color_name": "Bordó Noble",
+      "color_hex": "#800020",
+      "images": [
+        "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:06:00.000Z"
+    },
+    "var_5": {
+      "product_id": "prod_3",
+      "color_name": "Negro Satinado",
+      "color_hex": "#1C1C1C",
+      "images": [
+        "https://images.unsplash.com/photo-1624222247344-550fb8ec2780?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:10:00.000Z"
+    },
+    "var_6": {
+      "product_id": "prod_3",
+      "color_name": "Marrón Caramelo",
+      "color_hex": "#8B5A2B",
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:11:00.000Z"
+    },
+    "var_7": {
+      "product_id": "prod_4",
+      "color_name": "Marrón Oliva",
+      "color_hex": "#556B2F",
+      "images": [
+        "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:15:00.000Z"
+    },
+    "var_8": {
+      "product_id": "prod_4",
+      "color_name": "Negro Carbón",
+      "color_hex": "#262626",
+      "images": [
+        "https://images.unsplash.com/photo-1588444839799-eb6cd779816c?auto=format&fit=crop&q=80&w=800"
+      ],
+      "is_active": true,
+      "created_at": "2026-05-22T23:16:00.000Z"
+    }
+  }
+}

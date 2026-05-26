@@ -1,7 +1,9 @@
-import { createClient } from "@/utils/supabase/server"
+import { db } from "@/lib/firebase"
+import { collection, query, where, getDocs, limit } from "firebase/firestore"
 import { ProductDetail } from "@/components/product-detail"
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
+import { Product, ProductVariant } from "@/types/database"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -13,13 +15,11 @@ import {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params
-    const supabase = await createClient()
 
-    const { data: product } = await supabase
-        .from("products")
-        .select("name, description")
-        .eq("slug", slug)
-        .single()
+    const q = query(collection(db, "products"), where("slug", "==", slug), limit(1))
+    const productsSnap = await getDocs(q)
+    const productDoc = productsSnap.docs[0]
+    const product = productDoc ? (productDoc.data() as Product) : null
 
     if (!product) {
         return {
@@ -35,24 +35,29 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const supabase = await createClient()
 
-    // Fetch product and its variants
-    const { data: product } = await supabase
-        .from("products")
-        .select("*")
-        .eq("slug", slug)
-        .single()
+    // Fetch product by slug
+    const q = query(collection(db, "products"), where("slug", "==", slug), limit(1))
+    const productsSnap = await getDocs(q)
+    const productDoc = productsSnap.docs[0]
 
-    if (!product) {
+    if (!productDoc) {
         notFound()
     }
 
-    const { data: variants } = await supabase
-        .from("product_variants")
-        .select("*")
-        .eq("product_id", product.id)
-        .eq("is_active", true)
+    const product = { id: productDoc.id, ...productDoc.data() } as Product
+
+    // Fetch its variants
+    const vQ = query(
+        collection(db, "product_variants"),
+        where("product_id", "==", product.id),
+        where("is_active", "==", true)
+    )
+    const variantsSnap = await getDocs(vQ)
+    const variants = variantsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    })) as ProductVariant[]
 
     return (
         <div className="container px-4 sm:px-8 py-16">

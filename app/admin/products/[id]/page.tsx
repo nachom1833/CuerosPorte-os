@@ -1,25 +1,30 @@
-import { createClient } from "@/utils/supabase/server"
+import { db } from "@/lib/firebase"
+import { doc, getDoc, collection, query, where, orderBy, getDocs } from "firebase/firestore"
 import { notFound } from "next/navigation"
 import { ProductForm } from "@/components/admin/product-form"
 import { VariantManager } from "@/components/admin/variant-manager"
+import { Product, ProductVariant } from "@/types/database"
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
-    const supabase = await createClient()
 
-    const { data: product } = await supabase
-        .from("products")
-        .select("*")
-        .eq("id", id)
-        .single()
+    const productRef = doc(db, "products", id)
+    const productSnap = await getDoc(productRef)
 
-    if (!product) notFound()
+    if (!productSnap.exists()) notFound()
 
-    const { data: variants } = await supabase
-        .from("product_variants")
-        .select("*")
-        .eq("product_id", id)
-        .order("created_at")
+    const product = { id: productSnap.id, ...productSnap.data() } as Product
+
+    const vQ = query(
+        collection(db, "product_variants"),
+        where("product_id", "==", id),
+        orderBy("created_at")
+    )
+    const variantsSnap = await getDocs(vQ)
+    const variants = variantsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    })) as ProductVariant[]
 
     return (
         <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_350px] gap-6">

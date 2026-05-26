@@ -1,4 +1,5 @@
-import { createClient } from "@/utils/supabase/server"
+import { verifySessionToken } from "@/utils/firebase/auth"
+import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
 export default async function AdminLayout({
@@ -6,9 +7,9 @@ export default async function AdminLayout({
 }: {
     children: React.ReactNode
 }) {
-    const supabase = await createClient()
-
-    const { data: { user } } = await supabase.auth.getUser()
+    const cookieStore = await cookies()
+    const token = cookieStore.get("firebase-token")?.value
+    const user = await verifySessionToken(token)
 
     if (!user) {
         redirect("/login")

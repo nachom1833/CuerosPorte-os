@@ -1,4 +1,5 @@
-import { createClient } from "@/utils/supabase/server"
+import { db } from "@/lib/firebase"
+import { collection, query, where, getDocs } from "firebase/firestore"
 import { ProductCard } from "@/components/product-card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
@@ -20,17 +21,26 @@ export default async function CatalogPage({
     const params = await searchParams; // Await params in Next.js 15
     const category = params.category;
 
-    const supabase = await createClient()
+    const q = category
+        ? query(collection(db, "products"), where("category", "==", category))
+        : query(collection(db, "products"))
 
-    let query = supabase
-        .from("products")
-        .select("*, product_variants(images)")
+    const productsSnap = await getDocs(q)
+    const rawProducts = productsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }))
 
-    if (category) {
-        query = query.eq("category", category)
-    }
+    const variantsSnap = await getDocs(collection(db, "product_variants"))
+    const rawVariants = variantsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    })) as any[]
 
-    const { data: products } = await query
+    const products = rawProducts.map(p => ({
+        ...p,
+        product_variants: rawVariants.filter(v => v.product_id === p.id && v.is_active)
+    })) as any[]
 
     const categories = ["Bolsos", "Carteras", "Cinturones", "Billeteras", "Accesorios"]
 

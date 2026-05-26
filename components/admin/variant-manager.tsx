@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import type { ProductVariant } from "@/types/database"
-import { createClient } from "@/utils/supabase/client"
+import { db, storage } from "@/lib/firebase"
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { collection, addDoc, doc, deleteDoc } from "firebase/firestore"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -27,7 +29,6 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
 
     async function handleAddVariant() {
         setIsUploading(true)
-        const supabase = createClient()
         const imageUrls: string[] = []
 
         try {
@@ -38,37 +39,23 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                     const fileExt = file.name.split('.').pop()
                     const fileName = `${productId}/${Date.now()}-${i}.${fileExt}`
 
-                    const { error: uploadError, data } = await supabase.storage
-                        .from('products')
-                        .upload(fileName, file)
-
-                    if (uploadError) {
-                        console.error("Upload error:", uploadError)
-                        console.error("Upload error:", uploadError)
-                        toast.error(`Error al subir ${file.name}`)
-                        continue
-                        continue
-                    }
-
-                    // Get Public URL
-                    const { data: { publicUrl } } = supabase.storage
-                        .from('products')
-                        .getPublicUrl(fileName)
+                    const storageRef = ref(storage, `products/${fileName}`)
+                    await uploadBytes(storageRef, file)
+                    const publicUrl = await getDownloadURL(storageRef)
 
                     imageUrls.push(publicUrl)
                 }
             }
 
             // 2. Insert Variant
-            const { error: insertError } = await supabase.from("product_variants").insert({
+            await addDoc(collection(db, "product_variants"), {
                 product_id: productId,
                 color_name: colorName,
                 color_hex: colorHex,
                 images: imageUrls,
-                is_active: true
+                is_active: true,
+                created_at: new Date().toISOString()
             })
-
-            if (insertError) throw insertError
 
             // Reset Form
             setColorName("")
@@ -86,9 +73,13 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
 
     async function handleDelete(id: string) {
         if (!confirm("¿Seguro que deseas eliminar esta variante?")) return;
-        const supabase = createClient()
-        await supabase.from("product_variants").delete().eq("id", id)
-        router.refresh()
+        try {
+            await deleteDoc(doc(db, "product_variants", id))
+            toast.success("Variante eliminada")
+            router.refresh()
+        } catch (error: any) {
+            toast.error("Error al eliminar variante", { description: error.message })
+        }
     }
 
     return (

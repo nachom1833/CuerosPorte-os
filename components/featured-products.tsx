@@ -1,19 +1,30 @@
-import { createClient } from "@/utils/supabase/server"
+import { db } from "@/lib/firebase"
+import { collection, query, limit, getDocs } from "firebase/firestore"
 import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Product, ProductVariant } from "@/types/database"
 
 export async function FeaturedProducts() {
-    const supabase = await createClient()
+    // 1. Fetch products (max 4)
+    const productsSnap = await getDocs(query(collection(db, "products"), limit(4)))
+    const products: Product[] = productsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    } as Product))
 
-    const { data: products } = await supabase
-        .from("products")
-        .select("*, product_variants(images)")
-        .limit(4)
+    // 2. Fetch active variants
+    const variantsSnap = await getDocs(collection(db, "product_variants"))
+    const variants: ProductVariant[] = variantsSnap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    } as ProductVariant))
 
-    // Transform data to match expectations (flatten variant images structure if needed)
-    // But our Card expects product and variant.
-    // We need to pick one variant to show. 
+    // 3. Map variants to products
+    const productsWithVariants = products.map(p => ({
+        ...p,
+        product_variants: variants.filter(v => v.product_id === p.id && v.is_active)
+    })) 
 
     return (
         <section className="py-24 bg-background">
@@ -30,9 +41,9 @@ export async function FeaturedProducts() {
                     </Button>
                 </div>
 
-                {products && products.length > 0 ? (
+                {productsWithVariants && productsWithVariants.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-                        {products.map((product) => (
+                        {productsWithVariants.map((product) => (
                             <ProductCard
                                 key={product.id}
                                 product={product}
