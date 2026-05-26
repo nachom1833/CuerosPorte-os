@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import Image from "next/image"
 import { addVariant, deleteVariant, updateVariantImages } from "@/app/admin/products/actions"
+import { getProductVariantImages } from "@/components/product-card"
 
 function formatImageInput(input: string): string {
     let trimmed = input.trim();
@@ -191,103 +192,106 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                 <CardContent>
                     {/* List */}
                     <div className="space-y-4 mb-6">
-                        {variants.map((variant) => (
-                            <div key={variant.id} className="p-4 border rounded-lg bg-background space-y-4">
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <div
-                                            className="w-6 h-6 rounded-full border shadow-sm"
-                                            style={{ backgroundColor: variant.color_hex }}
-                                        />
-                                        <p className="font-semibold text-sm">{variant.color_name}</p>
-                                    </div>
-                                    <Button 
-                                        variant="ghost" 
-                                        size="icon" 
-                                        onClick={() => handleDelete(variant.id)}
-                                        className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10 cursor-pointer"
-                                    >
-                                        <Trash2 className="w-4 h-4" />
-                                    </Button>
-                                </div>
-
-                                {/* Thumbnail grid with Delete option and Inline Uploader */}
-                                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
-                                    {variant.images?.map((img, idx) => (
-                                        <div key={idx} className="relative aspect-[3/4] bg-secondary/50 rounded-md overflow-hidden group/img border">
-                                            <Image
-                                                src={img}
-                                                alt={`Imagen ${idx + 1} de color ${variant.color_name}`}
-                                                fill
-                                                className="object-cover"
+                        {variants.map((variant) => {
+                            const images = getProductVariantImages(variant);
+                            return (
+                                <div key={variant.id} className="p-4 border rounded-lg bg-background space-y-4">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
+                                            <div
+                                                className="w-6 h-6 rounded-full border shadow-sm"
+                                                style={{ backgroundColor: variant.color_hex }}
                                             />
-                                            {/* Overlaid delete button shown on hover */}
-                                            <button
-                                                type="button"
-                                                onClick={() => handleDeleteImage(variant.id, variant.images, idx)}
-                                                className="absolute top-1 right-1 w-5 h-5 rounded-full bg-destructive text-white flex items-center justify-center shadow-md opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 hover:bg-destructive/90 cursor-pointer"
-                                                title="Eliminar esta foto"
-                                            >
-                                                <X className="w-3.5 h-3.5" />
-                                            </button>
+                                            <p className="font-semibold text-sm">{variant.color_name}</p>
                                         </div>
-                                    ))}
+                                        <Button 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            onClick={() => handleDelete(variant.id)}
+                                            className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10 cursor-pointer"
+                                        >
+                                            <Trash2 className="w-4 h-4" />
+                                        </Button>
+                                    </div>
 
-                                    {/* Upload slot for another photo */}
-                                    <label className="relative aspect-[3/4] rounded-md border-2 border-dashed flex flex-col items-center justify-center cursor-pointer hover:bg-muted/10 transition-all border-muted hover:border-primary">
-                                        {uploadingVariantId === variant.id ? (
-                                            <Loader2 className="w-4 h-4 text-primary animate-spin" />
-                                        ) : (
-                                            <>
-                                                <Plus className="w-4 h-4 text-muted-foreground" />
-                                                <span className="text-[10px] text-muted-foreground mt-1 font-semibold">Subir</span>
-                                            </>
-                                        )}
-                                        <input
-                                            type="file"
-                                            accept="image/*"
-                                            className="hidden"
-                                            disabled={uploadingVariantId === variant.id}
-                                            onChange={(e) => handleAddImageToVariant(variant.id, variant.images, e)}
-                                        />
-                                    </label>
-                                </div>
+                                    {/* Thumbnail grid with Delete option and Inline Uploader */}
+                                    <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
+                                        {images.map((img, idx) => (
+                                            <div key={idx} className="relative aspect-[3/4] bg-secondary/50 rounded-md overflow-hidden group/img border">
+                                                <Image
+                                                    src={img}
+                                                    alt={`Imagen ${idx + 1} de color ${variant.color_name}`}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                                {/* Overlaid delete button shown on hover */}
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDeleteImage(variant.id, images, idx)}
+                                                    className="absolute top-1 right-1 w-5 h-5 rounded-full bg-destructive text-white flex items-center justify-center shadow-md opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 hover:bg-destructive/90 cursor-pointer"
+                                                    title="Eliminar esta foto"
+                                                >
+                                                    <X className="w-3.5 h-3.5" />
+                                                </button>
+                                            </div>
+                                        ))}
 
-                                {/* Formulario para agregar una URL manual a esta variante existente */}
-                                <div className="flex gap-2 max-w-md pt-2">
-                                    <Input
-                                        placeholder="Pegar URL (ej: https://...) o ruta local (ej: /images/...)"
-                                        className="h-8 text-xs bg-background"
-                                        id={`url-input-${variant.id}`}
-                                        onKeyDown={async (e) => {
-                                            if (e.key === "Enter") {
-                                                e.preventDefault();
-                                                const url = e.currentTarget.value.trim();
-                                                if (url) {
-                                                    await handleAddUrlToVariant(variant.id, variant.images || [], url);
-                                                    e.currentTarget.value = "";
+                                        {/* Upload slot for another photo */}
+                                        <label className="relative aspect-[3/4] rounded-md border-2 border-dashed flex flex-col items-center justify-center cursor-pointer hover:bg-muted/10 transition-all border-muted hover:border-primary">
+                                            {uploadingVariantId === variant.id ? (
+                                                <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                                            ) : (
+                                                <>
+                                                    <Plus className="w-4 h-4 text-muted-foreground" />
+                                                    <span className="text-[10px] text-muted-foreground mt-1 font-semibold">Subir</span>
+                                                </>
+                                            )}
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                className="hidden"
+                                                disabled={uploadingVariantId === variant.id}
+                                                onChange={(e) => handleAddImageToVariant(variant.id, images, e)}
+                                            />
+                                        </label>
+                                    </div>
+
+                                    {/* Formulario para agregar una URL manual a esta variante existente */}
+                                    <div className="flex gap-2 max-w-md pt-2">
+                                        <Input
+                                            placeholder="Pegar URL (ej: https://...) o ruta local (ej: /images/...)"
+                                            className="h-8 text-xs bg-background"
+                                            id={`url-input-${variant.id}`}
+                                            onKeyDown={async (e) => {
+                                                if (e.key === "Enter") {
+                                                    e.preventDefault();
+                                                    const url = e.currentTarget.value.trim();
+                                                    if (url) {
+                                                        await handleAddUrlToVariant(variant.id, images, url);
+                                                        e.currentTarget.value = "";
+                                                    }
                                                 }
-                                            }
-                                        }}
-                                    />
-                                    <Button
-                                        size="sm"
-                                        variant="outline"
-                                        className="h-8 text-xs flex-shrink-0 cursor-pointer"
-                                        onClick={async () => {
-                                            const input = document.getElementById(`url-input-${variant.id}`) as HTMLInputElement;
-                                            const url = input?.value?.trim();
-                                            if (url) {
-                                                await handleAddUrlToVariant(variant.id, variant.images || [], url);
-                                                input.value = "";
-                                            }
-                                        }}
-                                    >
-                                        Asociar URL
-                                    </Button>
+                                            }}
+                                        />
+                                        <Button
+                                            size="sm"
+                                            variant="outline"
+                                            className="h-8 text-xs flex-shrink-0 cursor-pointer"
+                                            onClick={async () => {
+                                                const input = document.getElementById(`url-input-${variant.id}`) as HTMLInputElement;
+                                                const url = input?.value?.trim();
+                                                if (url) {
+                                                    await handleAddUrlToVariant(variant.id, images, url);
+                                                    input.value = "";
+                                                }
+                                            }}
+                                        >
+                                            Asociar URL
+                                        </Button>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                         {variants.length === 0 && <p className="text-sm text-muted-foreground">Aún no hay variantes de color creadas.</p>}
                     </div>
 

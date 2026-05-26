@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { MessageCircle, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { getProductVariantImages } from "@/components/product-card"
 
 interface ProductDetailProps {
     product: Product
@@ -20,8 +21,9 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
     )
     const [activeIdx, setActiveIdx] = useState(0)
 
-    const currentImages = selectedVariant?.images?.length
-        ? selectedVariant.images
+    const images = getProductVariantImages(selectedVariant)
+    const currentImages = images.length
+        ? images
         : ["/images/hero.png"] // Fallback
 
     const handlePrev = () => {
