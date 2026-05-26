@@ -35,7 +35,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
     const whatsappMessage = encodeURIComponent(
         `Hola, me interesa el producto: ${product.name} (Color: ${selectedVariant?.color_name || 'N/A'})`
     )
-    const whatsappLink = `https://wa.me/5491112345678?text=${whatsappMessage}`
+    const whatsappLink = `https://wa.me/+541140240594?text=${whatsappMessage}`
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">

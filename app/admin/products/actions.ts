@@ -54,3 +54,44 @@ export async function updateProduct(id: string, formData: FormData) {
     revalidatePath(`/admin/products/${id}`)
     redirect("/admin")
 }
+
+export async function addVariant(productId: string, variantData: { color_name: string, color_hex: string, images: string[] }) {
+    try {
+        const newRef = push(ref(db, "product_variants"))
+        await set(newRef, {
+            product_id: productId,
+            color_name: variantData.color_name,
+            color_hex: variantData.color_hex,
+            images: variantData.images,
+            is_active: true,
+            created_at: new Date().toISOString()
+        })
+        revalidatePath(`/admin/products/${productId}`)
+        return { success: true }
+    } catch (error: any) {
+        console.error("Error adding variant:", error)
+        return { error: error.message }
+    }
+}
+
+export async function deleteVariant(productId: string, variantId: string) {
+    try {
+        await set(ref(db, `product_variants/${variantId}`), null)
+        revalidatePath(`/admin/products/${productId}`)
+        return { success: true }
+    } catch (error: any) {
+        console.error("Error deleting variant:", error)
+        return { error: error.message }
+    }
+}
+
+export async function updateVariantImages(productId: string, variantId: string, images: string[]) {
+    try {
+        await set(ref(db, `product_variants/${variantId}/images`), images)
+        revalidatePath(`/admin/products/${productId}`)
+        return { success: true }
+    } catch (error: any) {
+        console.error("Error updating variant images:", error)
+        return { error: error.message }
+    }
+}

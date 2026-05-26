@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import type { ProductVariant } from "@/types/database"
-import { db } from "@/lib/firebase"
-import { ref as dbRef, push, set } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -12,6 +10,7 @@ import { Trash2, Plus, Image as ImageIcon, X, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import Image from "next/image"
+import { addVariant, deleteVariant, updateVariantImages } from "@/app/admin/products/actions"
 
 function formatImageInput(input: string): string {
     let trimmed = input.trim();
@@ -77,16 +76,16 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                 imageUrls.push(...urls)
             }
 
-            // 3. Insertar Variante en Realtime Database
-            const newRef = push(dbRef(db, "product_variants"))
-            await set(newRef, {
-                product_id: productId,
+            // 3. Insertar Variante usando Server Action
+            const result = await addVariant(productId, {
                 color_name: colorName,
                 color_hex: colorHex,
-                images: imageUrls,
-                is_active: true,
-                created_at: new Date().toISOString()
+                images: imageUrls
             })
+
+            if (result.error) {
+                throw new Error(result.error)
+            }
 
             // Resetear Formulario
             setColorName("")
@@ -106,7 +105,10 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
     async function handleDelete(id: string) {
         if (!confirm("¿Seguro que deseas eliminar esta variante?")) return;
         try {
-            await set(dbRef(db, `product_variants/${id}`), null)
+            const result = await deleteVariant(productId, id)
+            if (result.error) {
+                throw new Error(result.error)
+            }
             toast.success("Variante eliminada")
             router.refresh()
         } catch (error: any) {
@@ -119,7 +121,10 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         if (!confirm("¿Deseas eliminar esta imagen de la variante?")) return;
         try {
             const updatedImages = currentImages.filter((_, idx) => idx !== indexToRemove)
-            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
+            const result = await updateVariantImages(productId, variantId, updatedImages)
+            if (result.error) {
+                throw new Error(result.error)
+            }
             toast.success("Imagen eliminada de la variante")
             router.refresh()
         } catch (error: any) {
@@ -137,7 +142,10 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
             const newImagePath = `/images/products/${file.name}`
             const updatedImages = [...(currentImages || []), newImagePath]
             
-            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
+            const result = await updateVariantImages(productId, variantId, updatedImages)
+            if (result.error) {
+                throw new Error(result.error)
+            }
 
             toast.success("Imagen asociada exitosamente")
             router.refresh()
@@ -160,7 +168,11 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                 .filter(url => url.length > 0)
 
             const updatedImages = [...(currentImages || []), ...newUrls]
-            await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
+            const result = await updateVariantImages(productId, variantId, updatedImages)
+            if (result.error) {
+                throw new Error(result.error)
+            }
+
             toast.success("Imagen asociada exitosamente")
             router.refresh()
         } catch (error: any) {
