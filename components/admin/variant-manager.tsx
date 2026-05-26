@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import type { ProductVariant } from "@/types/database"
-import { db, storage } from "@/lib/firebase"
-import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"
+import { db } from "@/lib/firebase"
 import { ref as dbRef, push, set } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,22 +33,15 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         const imageUrls: string[] = []
 
         try {
-            // 1. Upload Images
+            // 1. Obtener las rutas relativas en base a los nombres de los archivos locales seleccionados
             if (selectedFiles) {
                 for (let i = 0; i < selectedFiles.length; i++) {
                     const file = selectedFiles[i]
-                    const fileExt = file.name.split('.').pop()
-                    const fileName = `${productId}/${Date.now()}-${i}.${fileExt}`
-
-                    const sRef = storageRef(storage, `products/${fileName}`)
-                    await uploadBytes(sRef, file)
-                    const publicUrl = await getDownloadURL(sRef)
-
-                    imageUrls.push(publicUrl)
+                    imageUrls.push(`/images/products/${file.name}`)
                 }
             }
 
-            // 2. Insert Variant
+            // 2. Insertar Variante en Realtime Database
             const newRef = push(dbRef(db, "product_variants"))
             await set(newRef, {
                 product_id: productId,
@@ -60,12 +52,12 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
                 created_at: new Date().toISOString()
             })
 
-            // Reset Form
+            // Resetear Formulario
             setColorName("")
             setColorHex("#000000")
             setSelectedFiles(null)
             toast.success("Variante agregada")
-            router.refresh() // Refresh server data
+            router.refresh() // Refrescar los datos del servidor
 
         } catch (error: any) {
             toast.error("Error al agregar variante", { description: error.message })
@@ -85,7 +77,7 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         }
     }
 
-    // Eliminar una imagen individual de la variante
+    // Eliminar una imagen de la variante
     async function handleDeleteImage(variantId: string, currentImages: string[], indexToRemove: number) {
         if (!confirm("¿Deseas eliminar esta imagen de la variante?")) return;
         try {
@@ -98,27 +90,22 @@ export function VariantManager({ productId, variants }: VariantManagerProps) {
         }
     }
 
-    // Agregar una imagen individual a la variante existente
+    // Asociar una nueva imagen local mediante el nombre del archivo seleccionado
     async function handleAddImageToVariant(variantId: string, currentImages: string[], e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0]
         if (!file) return
 
         setUploadingVariantId(variantId)
         try {
-            const fileExt = file.name.split('.').pop()
-            const fileName = `${productId}/${variantId}/${Date.now()}.${fileExt}`
-            const sRef = storageRef(storage, `products/${fileName}`)
+            const newImagePath = `/images/products/${file.name}`
+            const updatedImages = [...(currentImages || []), newImagePath]
             
-            await uploadBytes(sRef, file)
-            const publicUrl = await getDownloadURL(sRef)
-
-            const updatedImages = [...(currentImages || []), publicUrl]
             await set(dbRef(db, `product_variants/${variantId}/images`), updatedImages)
 
-            toast.success("Imagen agregada con éxito")
+            toast.success("Imagen asociada exitosamente")
             router.refresh()
         } catch (error: any) {
-            toast.error("Error al subir imagen", { description: error.message })
+            toast.error("Error al asociar imagen", { description: error.message })
         } finally {
             setUploadingVariantId(null)
         }

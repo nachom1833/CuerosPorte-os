@@ -3,6 +3,8 @@
 import { db } from "@/lib/firebase"
 import { ref, get, push, set } from "firebase/database"
 import { revalidatePath } from "next/cache"
+import fs from "fs"
+import path from "path"
 
 interface RawImportItem {
     Nombre: string
@@ -15,10 +17,66 @@ interface RawImportItem {
     "Color Hex"?: string
 }
 
+function normalizeString(str: string): string {
+    return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // Eliminar acentos
+        .replace(/[^a-z0-9]/g, " ")     // Mantener solo alfanuméricos, cambiar otros por espacios
+        .replace(/\s+/g, " ")           // Colapsar espacios consecutivos
+        .trim();
+}
+
+function findMatchingImages(productName: string, availableFiles: string[]): string[] {
+    const normProdName = normalizeString(productName);
+    if (!normProdName) return [];
+
+    const exactMatches: string[] = [];
+    const prefixMatches: string[] = [];
+
+    for (const file of availableFiles) {
+        if (file.startsWith(".")) continue;
+
+        const ext = path.extname(file).toLowerCase();
+        // Solo permitir formatos de imagen comunes
+        if (![".jpg", ".jpeg", ".png", ".webp", ".gif"].includes(ext)) continue;
+
+        const nameWithoutExt = path.basename(file, ext);
+        // Eliminar sufijos numéricos con paréntesis tipo (1), (2), etc. y recortar espacios
+        const baseNoSuffix = nameWithoutExt.replace(/\s*\(\d+\)\s*$/, "").trim();
+        const normFileBase = normalizeString(baseNoSuffix);
+
+        if (normFileBase === normProdName) {
+            exactMatches.push(`/images/products/${file}`);
+        } else if (normFileBase.startsWith(normProdName)) {
+            prefixMatches.push(`/images/products/${file}`);
+        }
+    }
+
+    if (exactMatches.length > 0) {
+        return exactMatches.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+    }
+
+    return prefixMatches.sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+}
+
 export async function importBulkProducts(items: RawImportItem[]) {
     try {
         let importedCount = 0
         let variantsCreated = 0
+
+        // Escanear el directorio local public/images/products
+        let availableFiles: string[] = []
+        try {
+            const productsDir = path.join(process.cwd(), "public", "images", "products")
+            if (fs.existsSync(productsDir)) {
+                availableFiles = fs.readdirSync(productsDir)
+            } else {
+                console.warn(`El directorio de imágenes no existe en: ${productsDir}`)
+            }
+        } catch (e) {
+            console.error("Error al leer el directorio de imágenes:", e)
+        }
 
         // 1. Obtener listados actuales de productos y variantes para validar duplicados
         const productsSnap = await get(ref(db, "products"))
@@ -85,15 +143,18 @@ export async function importBulkProducts(items: RawImportItem[]) {
 
             importedCount++
 
-            // 3. Crear variante de color inicial si contiene información válida
+            // 3. Crear o actualizar variante de color si contiene información válida
             const colorName = item["Color Nombre"] ? item["Color Nombre"].trim() : ""
             const colorHex = item["Color Hex"] ? item["Color Hex"].trim() : ""
 
             if (colorName && colorHex) {
-                // Validar que no exista previamente esta variante en base al product_id y color_name
+                // Validar si ya existe previamente esta variante
                 const existingVariantKey = Object.keys(variantsVal).find(
                     key => variantsVal[key].product_id === productId && variantsVal[key].color_name === colorName
                 )
+
+                // Encontrar imágenes locales usando coincidencia por nombre
+                const matchedImages = findMatchingImages(item.Nombre, availableFiles)
 
                 if (!existingVariantKey) {
                     const newVRef = push(ref(db, "product_variants"))
@@ -102,7 +163,7 @@ export async function importBulkProducts(items: RawImportItem[]) {
                         product_id: productId,
                         color_name: colorName,
                         color_hex: colorHex,
-                        images: [],
+                        images: matchedImages,
                         is_active: true,
                         created_at: new Date().toISOString(),
                     }
@@ -110,6 +171,13 @@ export async function importBulkProducts(items: RawImportItem[]) {
                     // Agregar al caché local
                     variantsVal[variantId] = newVariant
                     variantsCreated++
+                } else {
+                    // Si ya existe pero no tiene imágenes asociadas, asignarle las imágenes detectadas
+                    const existingVariant = variantsVal[existingVariantKey]
+                    if (!existingVariant.images || existingVariant.images.length === 0) {
+                        await set(ref(db, `product_variants/${existingVariantKey}/images`), matchedImages)
+                        existingVariant.images = matchedImages
+                    }
                 }
             }
         }
