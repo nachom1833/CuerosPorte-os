@@ -19,12 +19,28 @@ export function ProductCard({ product, variant }: ProductCardProps) {
             <Card className="h-full border-0 shadow-none bg-transparent overflow-hidden">
                 <CardContent className="p-0 relative aspect-[4/5] bg-secondary/50 rounded-xl overflow-hidden mb-4">
                     {variant?.images?.[0] ? (
-                        <Image
-                            src={variant.images[0]}
-                            alt={product.name}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                        <>
+                            {/* Primera imagen principal */}
+                            <Image
+                                src={variant.images[0]}
+                                alt={product.name}
+                                fill
+                                className={`object-cover transition-all duration-700 ease-in-out ${
+                                    variant.images[1] 
+                                        ? "group-hover:opacity-0 scale-100 group-hover:scale-105" 
+                                        : "group-hover:scale-105"
+                                }`}
+                            />
+                            {/* Segunda imagen alternativa revelada al hacer hover */}
+                            {variant.images[1] && (
+                                <Image
+                                    src={variant.images[1]}
+                                    alt={`${product.name} - Vista Alternativa`}
+                                    fill
+                                    className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 scale-105 group-hover:scale-100 transition-all duration-700 ease-in-out"
+                                />
+                            )}
+                        </>
                     ) : (
                         <div className="w-full h-full flex items-center justify-center text-muted-foreground">
                             No Image
