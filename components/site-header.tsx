@@ -1,18 +1,26 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ShoppingBag } from "lucide-react"
 
 export function SiteHeader() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
-            <div className="container flex h-16 items-center justify-between px-4 sm:px-8">
-                <Link href="/" className="mr-6 flex items-center space-x-2">
-                    <span className="text-2xl font-serif font-bold tracking-tight text-primary">CUEROS PORTEÑOS</span>
+        <header className="sticky top-0 z-50 w-full border-b border-border/20 bg-background/85 backdrop-blur-md">
+            <div className="container flex h-20 items-center justify-between px-4 sm:px-8">
+                <Link href="/" className="mr-6 flex items-center">
+                    <Image 
+                        src="/images/LOGOS/Logo-Principal-Color marron oscuro.png" 
+                        alt="Cueros Porteños" 
+                        width={180} 
+                        height={45} 
+                        className="object-contain h-10 w-auto"
+                        priority
+                    />
                 </Link>
-                <nav className="flex items-center space-x-6 text-sm font-medium">
-                    <Link href="/catalogo" className="transition-colors hover:text-primary text-primary/80">
+                <nav className="flex items-center space-x-6 text-sm font-semibold">
+                    <Link href="/catalogo" className="transition-colors hover:text-accent text-foreground/80">
                         Catálogo
                     </Link>
-                    <Link href="/admin" className="transition-colors hover:text-primary text-primary/80">
+                    <Link href="/admin" className="transition-colors hover:text-accent text-foreground/80">
                         Admin
                     </Link>
                 </nav>

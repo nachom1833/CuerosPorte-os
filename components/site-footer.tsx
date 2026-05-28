@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Clock, Mail, Instagram, MessageCircle } from "lucide-react"
 
 export function SiteFooter() {
@@ -11,11 +12,15 @@ export function SiteFooter() {
                     
                     {/* Column 1: Brand & Manifesto */}
                     <div className="space-y-4">
-                        <h4 className="text-lg font-serif font-bold tracking-tight text-secondary">
-                            CUEROS PORTEÑOS
-                        </h4>
+                        <Image 
+                            src="/images/LOGOS/Logo-Principal-Color marron claro.png" 
+                            alt="Cueros Porteños" 
+                            width={160} 
+                            height={40} 
+                            className="object-contain h-8 w-auto"
+                        />
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
-                            Marroquinería de alta gama nacida y confeccionada en nuestro taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
+                            Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
                         </p>
                     </div>
 

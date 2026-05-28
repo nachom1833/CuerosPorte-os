@@ -56,31 +56,31 @@
   /* Accent HEX #92764D (Acentos y botones) */
   /* Light/Base HEX #DDC8A6 (Fondos claros y tarjetas) */
 
-  --background: #DDC8A6; /* Color Claro/Base */
+  --background: #FBF8F3; /* Very light off-white/cream */
   --foreground: #251D13; /* Color Oscuro */
 
-  --card: #DDC8A6; /* Color Claro/Base */
+  --card: #FFFFFF; /* Pure White */
   --card-foreground: #251D13;
   
-  --popover: #DDC8A6;
+  --popover: #FFFFFF;
   --popover-foreground: #251D13;
   
   --primary: #251D13; /* Color Oscuro */
   --primary-foreground: #DDC8A6; /* Color Claro/Base */
   
-  --secondary: #57472B; /* Color Medio Oscuro */
-  --secondary-foreground: #DDC8A6;
+  --secondary: #DDC8A6; /* Color Claro/Base (Beige) as secondary accent background */
+  --secondary-foreground: #251D13;
   
-  --muted: #E2D2B4; /* A lighter, softer sandy beige for muted backgrounds */
+  --muted: #F5EFE6; /* A lighter, softer sandy cream for muted backgrounds */
   --muted-foreground: #57472B; /* Color Medio Oscuro for highly legible muted text */
   
   --accent: #92764D; /* Color Medio Claro */
-  --accent-foreground: #251D13;
+  --accent-foreground: #FFFFFF;
   
   --destructive: oklch(0.577 0.245 27.325);
   
-  --border: #57472B; /* Color Medio Oscuro */
-  --input: #57472B;
+  --border: #DDC8A6; /* Soft Beige border */
+  --input: #DDC8A6;
   --ring: #92764D;
 
   --chart-1: #251D13;
@@ -89,13 +89,13 @@
   --chart-4: #DDC8A6;
   --chart-5: #57472B;
 
-  --sidebar: #DDC8A6;
+  --sidebar: #FBF8F3;
   --sidebar-foreground: #251D13;
   --sidebar-primary: #251D13;
   --sidebar-primary-foreground: #DDC8A6;
-  --sidebar-accent: #57472B;
-  --sidebar-accent-foreground: #DDC8A6;
-  --sidebar-border: #57472B;
+  --sidebar-accent: #DDC8A6;
+  --sidebar-accent-foreground: #251D13;
+  --sidebar-border: #DDC8A6;
   --sidebar-ring: #92764D;
 }
 
