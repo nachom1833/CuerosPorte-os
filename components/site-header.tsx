@@ -8,10 +8,10 @@ export function SiteHeader() {
             <div className="container flex h-24 items-center justify-between px-4 sm:px-8">
                 <Link href="/" className="mr-6 flex items-center">
                     <Image 
-                        src="/images/LOGOS/Logo-Principal-Color marron oscuro.png" 
+                        src="/logo-principal-color-marron-oscuro.svg" 
                         alt="Cueros Porteños" 
-                        width={280} 
-                        height={70} 
+                        width={2725} 
+                        height={1981} 
                         className="object-contain h-14 sm:h-16 w-auto"
                         priority
                     />
