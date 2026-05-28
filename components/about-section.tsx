@@ -30,7 +30,7 @@ export function AboutSection() {
                     </div>
                     <div className="w-full lg:w-1/2 space-y-6">
                         <Reveal>
-                            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-secondary">Nuestra Filosofía</span>
+                            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#57472B] dark:text-[#DDC8A6]">Nuestra Filosofía</span>
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-foreground leading-tight">
@@ -61,7 +61,7 @@ export function AboutSection() {
                     </div>
                     <div className="w-full lg:w-1/2 space-y-6">
                         <Reveal>
-                            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-secondary">El Taller</span>
+                            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#57472B] dark:text-[#DDC8A6]">El Taller</span>
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-foreground leading-tight">
@@ -80,7 +80,7 @@ export function AboutSection() {
                 {/* Section 3: Atelier Production Location (TRUST FACTOR) */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-[#F5EFE6] dark:bg-[#2C2419] p-8 sm:p-12 rounded-3xl border border-border/30 shadow-sm">
                     <div className="lg:col-span-6 space-y-6">
-                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-secondary">Encontranos</span>
+                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#57472B] dark:text-[#DDC8A6]">Encontranos</span>
                         <h3 className="text-3xl font-serif font-bold text-foreground">Nuestro Taller de Producción</h3>
                         <p className="text-foreground/80 leading-relaxed font-sans font-normal">
                             Diseñamos y fabricamos de manera directa, ofreciendo atención tanto al público general como a empresas que buscan marroquinería fina y desarrollos corporativos a medida.
@@ -88,7 +88,7 @@ export function AboutSection() {
                         
                         <div className="space-y-4 pt-2">
                             <div className="flex items-start gap-4">
-                                <div className="p-2 bg-background rounded-lg border border-border/40 text-secondary">
+                                <div className="p-2 bg-background rounded-lg border border-border/40 text-[#92764D]">
                                     <MapPin className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -98,7 +98,7 @@ export function AboutSection() {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-2 bg-background rounded-lg border border-border/40 text-secondary">
+                                <div className="p-2 bg-background rounded-lg border border-border/40 text-[#92764D]">
                                     <Clock className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -108,7 +108,7 @@ export function AboutSection() {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="p-2 bg-background rounded-lg border border-border/40 text-secondary">
+                                <div className="p-2 bg-background rounded-lg border border-border/40 text-[#92764D]">
                                     <Mail className="h-5 w-5" />
                                 </div>
                                 <div>
@@ -154,7 +154,7 @@ export function AboutSection() {
 
                             {/* Nearby landmark banner - Estacion Villa Luro */}
                             <div className="absolute top-[8%] left-[6%] w-[28%] h-[24%] bg-accent/15 border border-accent/25 rounded-lg flex flex-col items-center justify-center p-2 text-center pointer-events-none">
-                                <span className="text-[8px] font-bold tracking-wider uppercase text-secondary">Estación</span>
+                                <span className="text-[8px] font-bold tracking-wider uppercase text-[#57472B] dark:text-[#DDC8A6]">Estación</span>
                                 <span className="text-[10px] font-serif font-semibold text-foreground/75 leading-tight">Villa Luro</span>
                             </div>
 
@@ -164,7 +164,7 @@ export function AboutSection() {
                                 <div className="absolute -top-1 w-10 h-10 bg-accent/20 rounded-full animate-ping" />
                                 
                                 <div className="relative bg-primary text-primary-foreground p-2 rounded-full shadow-lg border border-accent flex items-center justify-center">
-                                    <MapPin className="h-5 w-5 text-secondary animate-bounce" />
+                                    <MapPin className="h-5 w-5 text-[#92764D] animate-bounce" />
                                 </div>
                                 <div className="mt-1 bg-primary text-primary-foreground dark:bg-background dark:text-foreground px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase shadow-md border border-border/40 whitespace-nowrap">
                                     Taller Cueros Porteños
@@ -199,7 +199,7 @@ export function AboutSection() {
                 {/* Section 4: Instagram Feed Gallery (SOCIAL PROOF) */}
                 <div className="space-y-8">
                     <div className="text-center max-w-xl mx-auto space-y-3">
-                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-secondary">Nuestra Comunidad</span>
+                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#57472B] dark:text-[#DDC8A6]">Nuestra Comunidad</span>
                         <h3 className="text-3xl font-serif font-bold text-foreground">El Proceso en Instagram</h3>
                         <p className="text-foreground/80 leading-relaxed text-sm sm:text-base">
                             Seguí nuestro día a día, lanzamientos exclusivos y el detrás de escena del taller marroquinero.
@@ -208,7 +208,7 @@ export function AboutSection() {
                             href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            className="inline-flex items-center gap-2 text-secondary hover:underline font-semibold text-sm pt-1"
+                            className="inline-flex items-center gap-2 text-[#57472B] dark:text-[#DDC8A6] hover:underline font-semibold text-sm pt-1"
                         >
                             @cueros_port <ArrowRight className="h-3.5 w-3.5" />
                         </a>
@@ -321,7 +321,7 @@ export function AboutSection() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-16 border-t border-b border-border/50">
                     <Reveal width="100%" delay={0.1}>
                         <div className="text-center space-y-4 p-6 group">
-                            <div className="w-14 h-14 bg-accent/10 text-secondary rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                            <div className="w-14 h-14 bg-accent/10 text-[#57472B] dark:text-[#DDC8A6] rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                                 <Gem className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Materiales Nobles</h3>
@@ -333,7 +333,7 @@ export function AboutSection() {
                     
                     <Reveal width="100%" delay={0.2}>
                         <div className="text-center space-y-4 p-6 border-l-0 md:border-l md:border-r border-border/50 group">
-                            <div className="w-14 h-14 bg-accent/10 text-secondary rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                            <div className="w-14 h-14 bg-accent/10 text-[#57472B] dark:text-[#DDC8A6] rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                                 <Hammer className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Hecho a Mano</h3>
@@ -345,7 +345,7 @@ export function AboutSection() {
                     
                     <Reveal width="100%" delay={0.3}>
                         <div className="text-center space-y-4 p-6 group">
-                            <div className="w-14 h-14 bg-accent/10 text-secondary rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+                            <div className="w-14 h-14 bg-accent/10 text-[#57472B] dark:text-[#DDC8A6] rounded-full flex items-center justify-center mx-auto border border-accent/20 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
                                 <ShieldCheck className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Garantía Porteña</h3>

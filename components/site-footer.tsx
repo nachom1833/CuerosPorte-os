@@ -15,9 +15,9 @@ export function SiteFooter() {
                         <Image 
                             src="/images/LOGOS/Logo-Principal-Color marron claro.png" 
                             alt="Cueros Porteños" 
-                            width={160} 
-                            height={40} 
-                            className="object-contain h-8 w-auto"
+                            width={240} 
+                            height={60} 
+                            className="object-contain h-12 w-auto"
                         />
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
                             Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
