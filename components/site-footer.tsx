@@ -3,7 +3,7 @@ import { MapPin, Clock, Mail, Instagram, MessageCircle } from "lucide-react"
 
 export function SiteFooter() {
     return (
-        <footer className="bg-primary text-primary-foreground border-t border-border/20 pt-16 pb-12">
+        <footer className="bg-primary text-primary-foreground border-t border-border/20 pt-16 pb-12 font-sans">
             <div className="container px-4 sm:px-8 mx-auto space-y-12">
                 
                 {/* 4-Column Grid */}
@@ -14,24 +14,24 @@ export function SiteFooter() {
                         <h4 className="text-lg font-serif font-bold tracking-tight text-secondary">
                             CUEROS PORTEÑOS
                         </h4>
-                        <p className="text-sm opacity-80 leading-relaxed max-w-xs">
-                            Marroquinería de alta gama nacida y confeccionada en el histórico barrio de San Telmo, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia.
+                        <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
+                            Marroquinería de alta gama nacida y confeccionada en nuestro taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
                         </p>
                     </div>
 
                     {/* Column 2: Showroom & Hours */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
-                            El Atelier
+                            El Taller
                         </h4>
-                        <ul className="space-y-3 text-sm opacity-80">
+                        <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li className="flex items-start gap-2.5">
                                 <MapPin className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                                <span>Defensa 852, San Telmo,<br />CABA, Argentina</span>
+                                <span>Manzoni 162, Villa Luro,<br />CABA, Argentina</span>
                             </li>
-                            <li className="flex items-center gap-2.5">
-                                <Clock className="h-4 w-4 text-secondary shrink-0" />
-                                <span>Lun. a Sáb. 10:00 - 19:00 hs</span>
+                            <li className="flex items-start gap-2.5">
+                                <Clock className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
+                                <span>Lun. a Vie. 09:00 - 18:00 hs<br />Sáb. 09:00 - 13:00 hs</span>
                             </li>
                         </ul>
                     </div>
@@ -41,7 +41,7 @@ export function SiteFooter() {
                         <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             Contacto
                         </h4>
-                        <ul className="space-y-3 text-sm opacity-80">
+                        <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li>
                                 <a 
                                     href="mailto:contacto@cuerosportenos.com.ar"
@@ -70,17 +70,17 @@ export function SiteFooter() {
                         <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             Comunidad
                         </h4>
-                        <p className="text-sm opacity-80 leading-relaxed">
+                        <p className="text-sm opacity-80 leading-relaxed font-sans font-normal">
                             Seguí nuestro proceso artesanal y enterate de nuevos ingresos.
                         </p>
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-secondary/95 shadow transition-colors"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-secondary-foreground text-xs font-semibold uppercase tracking-wider rounded-full hover:bg-secondary/95 shadow transition-colors font-sans"
                         >
                             <Instagram className="h-4 w-4 shrink-0" />
-                            @cuerosportenos
+                            @cueros_port
                         </a>
                     </div>
 
@@ -88,10 +88,10 @@ export function SiteFooter() {
 
                 {/* Bottom Divider & Copyright */}
                 <div className="pt-8 border-t border-[#3E3120] flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <small className="opacity-70 text-xs text-center sm:text-left">
+                    <small className="opacity-70 text-xs text-center sm:text-left font-sans font-normal">
                         © {new Date().getFullYear()} Cueros Porteños. Todos los derechos reservados. Hecho a mano en Argentina.
                     </small>
-                    <div className="flex gap-6 text-xs opacity-70">
+                    <div className="flex gap-6 text-xs opacity-70 font-sans font-normal">
                         <Link href="/catalogo" className="hover:text-secondary hover:underline transition-colors">
                             Catálogo
                         </Link>
@@ -105,4 +105,3 @@ export function SiteFooter() {
         </footer>
     )
 }
-

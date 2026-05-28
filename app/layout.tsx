@@ -24,6 +24,15 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Cueros Porteños",
   description: "Marroquinería de alta calidad hecha a mano.",
+  icons: {
+    icon: [
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" }
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

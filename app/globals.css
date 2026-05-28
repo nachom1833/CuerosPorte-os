@@ -6,9 +6,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Satoshi Variable', var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-playfair);
+  --font-serif: 'PF Marlet Display', var(--font-playfair), serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,89 +50,89 @@
 :root {
   --radius: 0rem; /* Brand aesthetic: sharp, clean, premium */
   
-  /* Brand Colors from Manual */
-  /* Dark Brown: #251D13 */
-  /* Medium Brown: #57472B */
-  /* Light Brown/Gold: #92764D */
-  /* Beige: #DDC8A6 */
+  /* User-Defined Colors */
+  /* Dark HEX #251D13 (Textos principales y fondos oscuros) */
+  /* Medium Dark HEX #57472B (Elementos secundarios) */
+  /* Accent HEX #92764D (Acentos y botones) */
+  /* Light/Base HEX #DDC8A6 (Fondos claros y tarjetas) */
 
-  --background: #FBF8F3; /* Very light cream/off-white */
-  --foreground: #251D13; /* Dark Brown */
+  --background: #DDC8A6; /* Color Claro/Base */
+  --foreground: #251D13; /* Color Oscuro */
 
-  --card: #FFFFFF;
+  --card: #DDC8A6; /* Color Claro/Base */
   --card-foreground: #251D13;
   
-  --popover: #FFFFFF;
+  --popover: #DDC8A6;
   --popover-foreground: #251D13;
   
-  --primary: #251D13; /* Dark Brown */
-  --primary-foreground: #DDC8A6; /* Beige */
+  --primary: #251D13; /* Color Oscuro */
+  --primary-foreground: #DDC8A6; /* Color Claro/Base */
   
-  --secondary: #DDC8A6; /* Beige */
-  --secondary-foreground: #251D13; /* Dark Brown */
+  --secondary: #57472B; /* Color Medio Oscuro */
+  --secondary-foreground: #DDC8A6;
   
-  --muted: #F5EFE6; /* Lightened Beige */
-  --muted-foreground: #92764D; /* Light Brown/Gold */
+  --muted: #57472B;
+  --muted-foreground: #DDC8A6;
   
-  --accent: #92764D; /* Light Brown/Gold */
-  --accent-foreground: #FFFFFF;
+  --accent: #92764D; /* Color Medio Claro */
+  --accent-foreground: #251D13;
   
   --destructive: oklch(0.577 0.245 27.325);
   
-  --border: #DDC8A6; /* Beige */
-  --input: #DDC8A6; /* Beige */
-  --ring: #57472B; /* Medium Brown */
+  --border: #57472B; /* Color Medio Oscuro */
+  --input: #57472B;
+  --ring: #92764D;
 
   --chart-1: #251D13;
   --chart-2: #57472B;
   --chart-3: #92764D;
   --chart-4: #DDC8A6;
-  --chart-5: #F5EFE6;
+  --chart-5: #57472B;
 
-  --sidebar: #FBF8F3;
+  --sidebar: #DDC8A6;
   --sidebar-foreground: #251D13;
   --sidebar-primary: #251D13;
   --sidebar-primary-foreground: #DDC8A6;
-  --sidebar-accent: #DDC8A6;
-  --sidebar-accent-foreground: #251D13;
-  --sidebar-border: #DDC8A6;
-  --sidebar-ring: #57472B;
+  --sidebar-accent: #57472B;
+  --sidebar-accent-foreground: #DDC8A6;
+  --sidebar-border: #57472B;
+  --sidebar-ring: #92764D;
 }
 
 .dark {
-  /* Adapted Dark Mode using Brand Colors */
-  --background: #251D13; /* Dark Brown */
-  --foreground: #DDC8A6; /* Beige */
+  /* Adapted Dark Mode using user color mapping */
+  --background: #251D13; /* Color Oscuro */
+  --foreground: #DDC8A6; /* Color Claro/Base */
   
-  --card: #2C2419; /* Slightly lighter dark brown */
+  --card: #251D13;
   --card-foreground: #DDC8A6;
   
-  --popover: #2C2419;
+  --popover: #251D13;
   --popover-foreground: #DDC8A6;
   
-  --primary: #DDC8A6; /* Beige */
-  --primary-foreground: #251D13; /* Dark Brown */
+  --primary: #DDC8A6; /* Color Claro/Base */
+  --primary-foreground: #251D13; /* Color Oscuro */
   
-  --secondary: #57472B; /* Medium Brown */
+  --secondary: #57472B; /* Color Medio Oscuro */
   --secondary-foreground: #DDC8A6;
   
   --muted: #57472B;
   --muted-foreground: #DDC8A6;
   
   --accent: #92764D;
-  --accent-foreground: #FFFFFF;
+  --accent-foreground: #251D13;
   
   --destructive: oklch(0.704 0.191 22.216);
   
   --border: #57472B;
   --input: #57472B;
-  --ring: #DDC8A6;
+  --ring: #92764D;
 
   --chart-1: #DDC8A6;
   --chart-2: #92764D;
   --chart-3: #57472B;
   --chart-4: #251D13;
-  --chart-5: #F5EFE6;
+  --chart-5: #DDC8A6;
 
   --sidebar: #251D13;
   --sidebar-foreground: #DDC8A6;
@@ -141,7 +141,7 @@
   --sidebar-accent: #57472B;
   --sidebar-accent-foreground: #DDC8A6;
   --sidebar-border: #57472B;
-  --sidebar-ring: #DDC8A6;
+  --sidebar-ring: #92764D;
 }
 
 @layer base {
@@ -149,6 +149,19 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3 {
+    font-family: 'PF Marlet Display', var(--font-playfair), serif;
+    font-weight: 500; /* Medium weight */
+  }
+  h4, h5, h6 {
+    font-family: 'PF Marlet Display', var(--font-playfair), serif;
+    font-weight: 100; /* Thin weight */
+  }
+  p, span, li, a, button, input, textarea {
+    font-family: 'Satoshi Variable', var(--font-geist-sans), sans-serif;
+    font-weight: 400; /* Regular weight */
   }
 }
+

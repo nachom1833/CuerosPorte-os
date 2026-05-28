@@ -12,7 +12,7 @@ import {
 
 export function AboutSection() {
     return (
-        <section className="py-24 bg-secondary/5 dark:bg-[#251D13] space-y-32 overflow-hidden">
+        <section className="py-24 bg-secondary/5 dark:bg-[#251D13] space-y-32 overflow-hidden font-sans">
             <div className="container px-4 sm:px-8 mx-auto space-y-32">
 
                 {/* Section 1: Philosophy - Image Left, Text Right */}
@@ -20,8 +20,8 @@ export function AboutSection() {
                     <div className="relative w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-border/10">
                         <Reveal width="100%" className="h-full">
                             <Image
-                                src="/images/lifestyle.png"
-                                alt="Classic leather briefcase on vintage table"
+                                src="/images/products/carpeta con cierre.jpeg"
+                                alt="Carpeta con cierre de cuero genuino en taller"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -38,7 +38,7 @@ export function AboutSection() {
                             </h2>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <p className="text-lg text-foreground/80 leading-relaxed">
+                            <p className="text-lg text-foreground/80 leading-relaxed font-sans font-normal">
                                 En Cueros Porteños, creemos que los objetos que nos acompañan a diario deben ser más que funcionales; deben contar una historia.
                                 Nos inspiramos en la tradición marroquinera clásica, fusionándola con un diseño minimalista y contemporáneo para crear piezas que envejecen con gracia.
                             </p>
@@ -51,8 +51,8 @@ export function AboutSection() {
                     <div className="relative w-full lg:w-1/2 aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border border-border/10">
                         <Reveal width="100%" className="h-full">
                             <Image
-                                src="/images/workshop.png"
-                                alt="Artisan working in leather workshop"
+                                src="/images/products/portanotebook.jpeg"
+                                alt="Porta notebook de cuero vacuno curtido vegetal"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -69,21 +69,21 @@ export function AboutSection() {
                             </h2>
                         </Reveal>
                         <Reveal delay={0.2}>
-                            <p className="text-lg text-foreground/80 leading-relaxed">
-                                Cada pieza nace en nuestro taller en el histórico barrio de San Telmo. Seleccionamos personalmente los mejores cueros de curtiembre vegetal, respetando sus marcas naturales que hacen a cada producto único.
+                            <p className="text-lg text-foreground/80 leading-relaxed font-sans font-normal">
+                                Cada pieza nace en nuestro taller en el barrio de Villa Luro, Buenos Aires. Seleccionamos personalmente los mejores cueros de curtiembre vegetal, respetando sus marcas naturales que hacen a cada producto único.
                                 Nuestros artesanos cortan, cosen y terminan cada borde a mano, dedicando horas a perfeccionar los detalles que la producción masiva pasa por alto.
                             </p>
                         </Reveal>
                     </div>
                 </div>
 
-                {/* Section 3: Showroom & CSS Interactive Map (TRUST FACTOR) */}
+                {/* Section 3: Atelier Production Location (TRUST FACTOR) */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-[#F5EFE6] dark:bg-[#2C2419] p-8 sm:p-12 rounded-3xl border border-border/30 shadow-sm">
                     <div className="lg:col-span-6 space-y-6">
                         <span className="text-xs font-bold tracking-[0.25em] uppercase text-accent">Encontranos</span>
-                        <h3 className="text-3xl font-serif font-bold text-foreground">Nuestro Atelier & Showroom</h3>
-                        <p className="text-foreground/80 leading-relaxed">
-                            Te invitamos a conocer de cerca las texturas, aromas y detalles de nuestras colecciones en pleno corazón de Buenos Aires. Agendá tu visita personalizada y observá el proceso artesanal en vivo.
+                        <h3 className="text-3xl font-serif font-bold text-foreground">Nuestro Taller de Producción</h3>
+                        <p className="text-foreground/80 leading-relaxed font-sans font-normal">
+                            Diseñamos y fabricamos de manera directa, ofreciendo atención tanto al público general como a empresas que buscan marroquinería fina y desarrollos corporativos a medida.
                         </p>
                         
                         <div className="space-y-4 pt-2">
@@ -92,8 +92,8 @@ export function AboutSection() {
                                     <MapPin className="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-foreground">Dirección del Atelier</h4>
-                                    <p className="text-sm text-foreground/70">Defensa 852, San Telmo, CABA, Argentina</p>
+                                    <h4 className="font-semibold text-foreground">Dirección del Taller</h4>
+                                    <p className="text-sm text-foreground/70">Manzoni 162, C1407ICD Cdad. Autónoma de Buenos Aires</p>
                                 </div>
                             </div>
 
@@ -103,7 +103,7 @@ export function AboutSection() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-foreground">Horarios de Atención</h4>
-                                    <p className="text-sm text-foreground/70">Lunes a Sábados de 10:00 a 19:00 hs</p>
+                                    <p className="text-sm text-foreground/70">Lunes a Viernes de 09:00 a 18:00 hs, Sábados de 09:00 a 13:00 hs</p>
                                 </div>
                             </div>
 
@@ -121,12 +121,12 @@ export function AboutSection() {
                         <div className="pt-4 flex flex-wrap gap-4">
                             <Button asChild className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90">
                                 <a 
-                                    href="https://wa.me/5491134567890?text=Hola!%20Me%20gustar%C3%ADa%20agendar%20una%20visita%20a%20su%20taller%20en%20San%20Telmo." 
+                                    href="https://wa.me/5491134567890?text=Hola!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta%20sobre%20sus%20productos%20de%20cuero%20y%20compras." 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-2 font-semibold"
                                 >
-                                    Agendar Visita (WhatsApp)
+                                    Contacto por WhatsApp
                                     <ArrowRight className="h-4 w-4" />
                                 </a>
                             </Button>
@@ -134,31 +134,31 @@ export function AboutSection() {
                     </div>
 
                     <div className="lg:col-span-6">
-                        {/* High Fidelity CSS-Styled Map Component */}
+                        {/* High Fidelity CSS-Styled Map Component for Villa Luro */}
                         <div className="relative w-full h-[380px] bg-[#E8DFC8] dark:bg-[#3A3022] rounded-2xl overflow-hidden border border-border shadow-inner flex flex-col justify-between p-6">
                             
-                            {/* Street Lines - Defensa Street */}
+                            {/* Street Lines - Av. Rivadavia */}
                             <div className="absolute top-[42%] left-0 right-0 h-10 bg-background/40 dark:bg-background/10 border-t border-b border-border/30 flex items-center justify-start px-8 pointer-events-none">
-                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Calle Defensa</span>
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Av. Rivadavia</span>
                             </div>
                             
-                            {/* Street Lines - Humberto 1 */}
+                            {/* Street Lines - Calle Manzoni */}
                             <div className="absolute left-[38%] top-0 bottom-0 w-10 bg-background/40 dark:bg-background/10 border-l border-r border-border/30 flex items-center justify-start py-8 [writing-mode:vertical-lr] pointer-events-none">
-                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Humberto I</span>
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Calle Manzoni</span>
                             </div>
 
-                            {/* Street Lines - Carlos Calvo */}
+                            {/* Street Lines - Calle Yerbal */}
                             <div className="absolute left-[78%] top-0 bottom-0 w-10 bg-background/40 dark:bg-background/10 border-l border-r border-border/30 flex items-center justify-start py-8 [writing-mode:vertical-lr] pointer-events-none">
-                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Carlos Calvo</span>
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40 dark:text-foreground/30">Calle Yerbal</span>
                             </div>
 
-                            {/* Nearby landmark banner - Plaza Dorrego */}
-                            <div className="absolute top-[8%] left-[6%] w-[25%] h-[24%] bg-accent/15 border border-accent/25 rounded-lg flex flex-col items-center justify-center p-2 text-center pointer-events-none">
-                                <span className="text-[8px] font-bold tracking-wider uppercase text-accent">Plaza</span>
-                                <span className="text-[10px] font-serif font-semibold text-foreground/75 leading-tight">Dorrego</span>
+                            {/* Nearby landmark banner - Estacion Villa Luro */}
+                            <div className="absolute top-[8%] left-[6%] w-[28%] h-[24%] bg-accent/15 border border-accent/25 rounded-lg flex flex-col items-center justify-center p-2 text-center pointer-events-none">
+                                <span className="text-[8px] font-bold tracking-wider uppercase text-accent">Estación</span>
+                                <span className="text-[10px] font-serif font-semibold text-foreground/75 leading-tight">Villa Luro</span>
                             </div>
 
-                            {/* MAP PIN MARKER - Cueros Porteños */}
+                            {/* MAP PIN MARKER - Cueros Porteños Taller */}
                             <div className="absolute top-[34%] left-[52%] z-20 flex flex-col items-center">
                                 {/* Pulsing Ring */}
                                 <div className="absolute -top-1 w-10 h-10 bg-accent/20 rounded-full animate-ping" />
@@ -167,21 +167,21 @@ export function AboutSection() {
                                     <MapPin className="h-5 w-5 text-accent animate-bounce" />
                                 </div>
                                 <div className="mt-1 bg-primary text-primary-foreground dark:bg-background dark:text-foreground px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase shadow-md border border-border/40 whitespace-nowrap">
-                                    Cueros Porteños Taller
+                                    Taller Cueros Porteños
                                 </div>
                             </div>
 
                             {/* Header Label inside Map */}
                             <div className="z-10 bg-background/95 dark:bg-[#251D13]/95 backdrop-blur-sm px-4 py-2.5 rounded-xl border border-border/40 max-w-[240px] shadow-md flex items-center gap-2">
                                 <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                                <span className="text-xs font-semibold text-foreground">Taller Abierto Hoy</span>
+                                <span className="text-xs font-semibold text-foreground">Taller Abierto</span>
                             </div>
 
                             {/* Footer link inside Map */}
                             <div className="z-10 w-full flex justify-end">
                                 <Button asChild size="sm" variant="secondary" className="rounded-full bg-background/90 dark:bg-primary/90 text-foreground hover:bg-background shadow border border-border/30">
                                     <a 
-                                        href="https://maps.google.com/?q=Defensa+852+San+Telmo+Buenos+Aires" 
+                                        href="https://maps.google.com/?q=Manzoni+162+Villa+Luro+Buenos+Aires" 
                                         target="_blank" 
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 text-xs font-semibold"
@@ -205,22 +205,22 @@ export function AboutSection() {
                             Seguí nuestro día a día, lanzamientos exclusivos y el detrás de escena del taller marroquinero.
                         </p>
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="inline-flex items-center gap-2 text-accent hover:underline font-semibold text-sm pt-1"
                         >
-                            @cuerosportenos <ArrowRight className="h-3.5 w-3.5" />
+                            @cueros_port <ArrowRight className="h-3.5 w-3.5" />
                         </a>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {/* Feed Item 1 */}
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30"
+                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30 bg-secondary/10"
                         >
                             <Image 
                                 src="/images/products/portafolio 1 fuelle.jpeg" 
@@ -242,10 +242,10 @@ export function AboutSection() {
 
                         {/* Feed Item 2 */}
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30"
+                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30 bg-secondary/10"
                         >
                             <Image 
                                 src="/images/products/tote bag rigida.jpeg" 
@@ -267,14 +267,14 @@ export function AboutSection() {
 
                         {/* Feed Item 3 */}
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30"
+                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30 bg-secondary/10"
                         >
                             <Image 
-                                src="/images/workshop.png" 
-                                alt="Artesano midiendo cuero genuino en el taller"
+                                src="/images/products/bandolera.jpeg" 
+                                alt="Bandolera de cuero en producción"
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
@@ -292,10 +292,10 @@ export function AboutSection() {
 
                         {/* Feed Item 4 */}
                         <a 
-                            href="https://instagram.com/cuerosportenos" 
+                            href="https://www.instagram.com/cueros_port" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30"
+                            className="group relative aspect-square rounded-xl overflow-hidden shadow bg-secondary/20 border border-border/30 bg-secondary/10"
                         >
                             <Image 
                                 src="/images/products/necesaire.jpeg" 
@@ -325,7 +325,7 @@ export function AboutSection() {
                                 <Gem className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Materiales Nobles</h3>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-muted-foreground leading-relaxed font-sans font-normal text-sm sm:text-base">
                                 Solo utilizamos cuero 100% genuino de primera calidad y herrajes de bronce macizo seleccionados.
                             </p>
                         </div>
@@ -337,7 +337,7 @@ export function AboutSection() {
                                 <Hammer className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Hecho a Mano</h3>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-muted-foreground leading-relaxed font-sans font-normal text-sm sm:text-base">
                                 Sin atajos industriales. Construcción marroquinera tradicional que garantiza la máxima durabilidad.
                             </p>
                         </div>
@@ -349,7 +349,7 @@ export function AboutSection() {
                                 <ShieldCheck className="h-6 w-6" />
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Garantía Porteña</h3>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-muted-foreground leading-relaxed font-sans font-normal text-sm sm:text-base">
                                 Respaldamos de por vida la costura y terminación de cada uno de los productos de nuestro taller.
                             </p>
                         </div>

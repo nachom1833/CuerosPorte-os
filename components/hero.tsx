@@ -8,7 +8,7 @@ import { MapPin, Mail, Instagram, Star, ShieldCheck, ArrowRight } from "lucide-r
 
 export function Hero() {
     return (
-        <section className="relative w-full min-h-[90vh] lg:min-h-[85vh] flex items-center bg-[#FBF8F3] dark:bg-[#251D13] py-16 lg:py-0 overflow-hidden border-b border-border/20">
+        <section className="relative w-full min-h-[90vh] lg:min-h-[85vh] flex items-center bg-background dark:bg-[#251D13] py-16 lg:py-0 overflow-hidden border-b border-border/20">
             {/* Background texture accents */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#92764D_1px,transparent_1px)] [background-size:24px_24px]" />
 
@@ -40,7 +40,7 @@ export function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.15 }}
                         >
-                            Cada pieza nace en nuestro taller de Buenos Aires. Seleccionamos personalmente cueros nobles argentinos para crear marroquinería que no solo dura, sino que cuenta tu historia al envejecer.
+                            Cada pieza nace en nuestro taller de Buenos Aires. Seleccionamos personalmente cueros nobles argentinos para crear marroquinería que cuenta tu historia. Venta al público y producción a medida para empresas.
                         </motion.p>
 
                         {/* CTA Buttons */}
@@ -57,7 +57,7 @@ export function Hero() {
                                 </Link>
                             </Button>
                             <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base bg-background/50 backdrop-blur-sm border-border hover:bg-background/80">
-                                <a href="#taller">Conocer Nuestro Taller</a>
+                                <a href="#taller">Conocer El Taller</a>
                             </Button>
                         </motion.div>
 
@@ -68,23 +68,23 @@ export function Hero() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.45 }}
                         >
-                            {/* Showroom Badge */}
+                            {/* Taller Location Badge */}
                             <a 
                                 href="#taller"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
                             >
                                 <span className="text-accent flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
                                     <MapPin className="h-4 w-4 shrink-0" />
-                                    Showroom
+                                    El Taller
                                 </span>
                                 <span className="text-sm font-medium text-foreground/90 leading-tight group-hover:underline">
-                                    San Telmo, CABA
+                                    Villa Luro, CABA
                                 </span>
                             </a>
 
                             {/* Instagram Link */}
                             <a 
-                                href="https://instagram.com/cuerosportenos" 
+                                href="https://www.instagram.com/cueros_port" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
@@ -94,7 +94,7 @@ export function Hero() {
                                     Comunidad
                                 </span>
                                 <span className="text-sm font-medium text-foreground/90 leading-tight group-hover:underline">
-                                    @cuerosportenos
+                                    @cueros_port
                                 </span>
                             </a>
 
@@ -125,7 +125,7 @@ export function Hero() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column: Stunning overlapping image collage */}
+                    {/* Right Column: Stunning overlapping image collage using real product images */}
                     <div className="lg:col-span-5 relative w-full aspect-[4/5] sm:aspect-square lg:aspect-[4/5] flex items-center justify-center">
                         <motion.div 
                             className="relative w-full h-full max-w-[420px] lg:max-w-none"
@@ -133,22 +133,22 @@ export function Hero() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.3 }}
                         >
-                            {/* Main lifestyle product image (top-right focused) */}
-                            <div className="absolute top-0 right-0 w-[82%] h-[78%] rounded-2xl overflow-hidden shadow-2xl border border-border/20 z-10 group">
+                            {/* Main provided product image: Portafolio 3 fuelles */}
+                            <div className="absolute top-0 right-0 w-[82%] h-[78%] rounded-2xl overflow-hidden shadow-2xl border border-border/20 z-10 group bg-secondary/10">
                                 <Image
-                                    src="/images/lifestyle.png"
-                                    alt="Cofre y marroquinería de lujo en cuero"
+                                    src="/images/products/portafolio 3 fuelles.jpeg"
+                                    alt="Portafolio 3 fuelles Cueros Porteños"
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                     priority
                                 />
                             </div>
 
-                            {/* Workshop action image (bottom-left focused, overlapping) */}
-                            <div className="absolute bottom-0 left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#FBF8F3] dark:border-[#251D13] z-20 group">
+                            {/* Overlapping provided product image: Necesaire */}
+                            <div className="absolute bottom-0 left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-2xl border-4 border-background z-20 group bg-secondary/10">
                                 <Image
-                                    src="/images/workshop.png"
-                                    alt="Artesano trabajando el cuero en nuestro taller"
+                                    src="/images/products/necesaire.jpeg"
+                                    alt="Necesaire de cuero genuino hecho a mano"
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                 />
@@ -162,7 +162,7 @@ export function Hero() {
                                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
                             >
                                 <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-90 leading-none">Hecho a Mano</span>
-                                <span className="text-sm font-serif font-semibold mt-1">Garantía Local</span>
+                                <span className="text-sm font-serif font-semibold mt-1">Garantía Porteña</span>
                             </motion.div>
                         </motion.div>
                     </div>
@@ -172,4 +172,5 @@ export function Hero() {
         </section>
     )
 }
+
 
