@@ -11,13 +11,13 @@ export function SiteFooter() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     
                     {/* Column 1: Brand & Manifesto */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 flex flex-col items-center text-center md:items-start md:text-left">
                         <Image 
-                            src="/favicon.svg" 
+                            src="/logo-principal-color-marron-oscuro.svg" 
                             alt="Cueros Porteños" 
-                            width={240} 
-                            height={60} 
-                            className="object-contain h-12 w-auto brightness-0 invert"
+                            width={2725} 
+                            height={1981} 
+                            className="object-contain h-14 w-auto brightness-0 invert transition-transform hover:scale-[1.02] duration-300"
                         />
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
                             Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
