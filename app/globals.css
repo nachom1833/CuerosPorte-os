@@ -71,8 +71,8 @@
   --secondary: #57472B; /* Color Medio Oscuro */
   --secondary-foreground: #DDC8A6;
   
-  --muted: #57472B;
-  --muted-foreground: #DDC8A6;
+  --muted: #E2D2B4; /* A lighter, softer sandy beige for muted backgrounds */
+  --muted-foreground: #57472B; /* Color Medio Oscuro for highly legible muted text */
   
   --accent: #92764D; /* Color Medio Claro */
   --accent-foreground: #251D13;

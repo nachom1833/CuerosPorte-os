@@ -23,14 +23,14 @@ export function Hero() {
                             transition={{ duration: 0.8 }}
                             className="space-y-4"
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-semibold tracking-wider uppercase">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-secondary text-xs font-semibold tracking-wider uppercase">
                                 <ShieldCheck className="h-3.5 w-3.5" />
                                 100% Cuero Vacuno de Curtido Vegetal
                             </div>
                             
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-foreground leading-[1.15]">
                                 Artesanía en Cuero <br />
-                                <span className="text-accent italic font-normal font-serif">Diseño Atemporal</span>
+                                <span className="text-secondary italic font-normal font-serif">Diseño Atemporal</span>
                             </h1>
                         </motion.div>
 
@@ -73,7 +73,7 @@ export function Hero() {
                                 href="#taller"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
                             >
-                                <span className="text-accent flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
+                                <span className="text-secondary flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
                                     <MapPin className="h-4 w-4 shrink-0" />
                                     El Taller
                                 </span>
@@ -89,7 +89,7 @@ export function Hero() {
                                 rel="noopener noreferrer"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
                             >
-                                <span className="text-accent flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
+                                <span className="text-secondary flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
                                     <Instagram className="h-4 w-4 shrink-0" />
                                     Comunidad
                                 </span>
@@ -103,7 +103,7 @@ export function Hero() {
                                 href="mailto:contacto@cuerosportenos.com.ar"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
                             >
-                                <span className="text-accent flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
+                                <span className="text-secondary flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
                                     <Mail className="h-4 w-4 shrink-0" />
                                     Escríbenos
                                 </span>
@@ -114,8 +114,8 @@ export function Hero() {
 
                             {/* Rating Stars */}
                             <div className="flex flex-col gap-1.5 p-1">
-                                <span className="text-accent flex items-center gap-1 text-xs font-semibold tracking-wider uppercase">
-                                    <Star className="h-4 w-4 fill-accent shrink-0" />
+                                <span className="text-secondary flex items-center gap-1 text-xs font-semibold tracking-wider uppercase font-sans">
+                                    <Star className="h-4 w-4 fill-secondary shrink-0 text-secondary" />
                                     Opiniones
                                 </span>
                                 <span className="text-sm font-medium text-foreground/90 leading-tight">
