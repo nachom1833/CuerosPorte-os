@@ -17,7 +17,7 @@ export function SiteFooter() {
                             alt="Cueros Porteños" 
                             width={2725} 
                             height={1981} 
-                            className="object-contain h-14 w-auto brightness-0 invert transition-transform hover:scale-[1.02] duration-300"
+                            className="object-contain h-16 sm:h-20 w-auto brightness-0 invert transition-transform hover:scale-[1.02] duration-300"
                         />
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
                             Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
@@ -96,10 +96,7 @@ export function SiteFooter() {
                     <small className="opacity-70 text-xs text-center sm:text-left font-sans font-normal">
                         © {new Date().getFullYear()} Cueros Porteños. Todos los derechos reservados. Hecho a mano en Argentina.
                     </small>
-                    <div className="flex gap-6 text-xs opacity-70 font-sans font-normal">
-                        <Link href="/catalogo" className="hover:text-secondary hover:underline transition-colors">
-                            Catálogo
-                        </Link>
+                    <div className="flex text-[11px] opacity-50 font-sans font-normal uppercase tracking-wider">
                         <Link href="/admin" className="hover:text-secondary hover:underline transition-colors">
                             Admin
                         </Link>
