@@ -4,11 +4,15 @@ import { notFound } from "next/navigation"
 import { ProductForm } from "@/components/admin/product-form"
 import { VariantManager } from "@/components/admin/variant-manager"
 import { Product, ProductVariant } from "@/types/database"
+import { getCategories } from "@/lib/categories"
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
 
-    const productSnap = await get(ref(db, `products/${id}`))
+    const [productSnap, categories] = await Promise.all([
+        get(ref(db, `products/${id}`)),
+        getCategories()
+    ])
 
     if (!productSnap.exists()) notFound()
 
@@ -27,7 +31,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
     return (
         <div className="max-w-4xl mx-auto grid md:grid-cols-[1fr_350px] gap-6">
             <div className="space-y-6">
-                <ProductForm product={product} />
+                <ProductForm product={product} categories={categories} />
             </div>
             <div>
                 <VariantManager productId={product.id} variants={variants || []} />

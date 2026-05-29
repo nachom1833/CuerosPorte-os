@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/product-card"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { getCategories } from "@/lib/categories"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -46,7 +47,8 @@ export default async function CatalogPage({
         product_variants: rawVariants.filter(v => v.product_id === p.id && v.is_active)
     })) as any[]
 
-    const categories = ["Bolsos", "Carteras", "Billeteras", "Accesorios"]
+    const categoriesList = await getCategories()
+    const categories = categoriesList.map(c => c.name)
 
     return (
         <div className="container px-4 sm:px-8 py-12">

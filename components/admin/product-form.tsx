@@ -2,24 +2,22 @@
 
 import { useTransition } from "react" // Next.js 15 uses useTransition for server actions
 import { Product } from "@/types/database"
+import { Category } from "@/lib/categories"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea" // Need to install textarea or use native
+import { Textarea } from "@/components/ui/textarea" 
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { createProduct, updateProduct } from "@/app/admin/products/actions"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
-// Assuming Textarea is installed or we use native textarea with minimal styling
-// Let's stick to standard components if possible or just use Input for description if needed, but textarea is better.
-// I'll assume separate component or just use <textarea className="..." />
-
 interface ProductFormProps {
     product?: Product
+    categories: Category[]
 }
 
-export function ProductForm({ product }: ProductFormProps) {
+export function ProductForm({ product, categories }: ProductFormProps) {
     const router = useRouter()
     const [isPending, startTransition] = useTransition()
 
@@ -62,7 +60,20 @@ export function ProductForm({ product }: ProductFormProps) {
 
                     <div className="grid gap-2">
                         <Label htmlFor="category">Categoría</Label>
-                        <Input id="category" name="category" defaultValue={product?.category} required placeholder="Bolsos, Carteras, etc." />
+                        <select
+                            id="category"
+                            name="category"
+                            defaultValue={product?.category || ""}
+                            required
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            <option value="" disabled>Selecciona una categoría</option>
+                            {categories.map((cat) => (
+                                <option key={cat.id} value={cat.name}>
+                                    {cat.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="grid gap-2">
