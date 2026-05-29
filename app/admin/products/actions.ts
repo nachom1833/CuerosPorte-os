@@ -1,9 +1,8 @@
 "use server"
 
-import { db } from "@/lib/firebase"
-import { ref, push, set, update } from "firebase/database"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
+import { serverDbSet, serverDbUpdate, serverDbPush } from "@/lib/db-server"
 
 export async function createProduct(formData: FormData) {
     const product = {
@@ -18,9 +17,7 @@ export async function createProduct(formData: FormData) {
     let generatedId = ""
 
     try {
-        const newRef = push(ref(db, "products"))
-        generatedId = newRef.key || ""
-        await set(newRef, {
+        generatedId = await serverDbPush("products", {
             ...product,
             created_at: new Date().toISOString(),
         })
@@ -44,7 +41,7 @@ export async function updateProduct(id: string, formData: FormData) {
     }
 
     try {
-        await update(ref(db, `products/${id}`), product)
+        await serverDbUpdate(`products/${id}`, product)
     } catch (error: any) {
         return { error: error.message }
     }
@@ -57,8 +54,7 @@ export async function updateProduct(id: string, formData: FormData) {
 
 export async function addVariant(productId: string, variantData: { color_name: string, color_hex: string, images: string[] }) {
     try {
-        const newRef = push(ref(db, "product_variants"))
-        await set(newRef, {
+        await serverDbPush("product_variants", {
             product_id: productId,
             color_name: variantData.color_name,
             color_hex: variantData.color_hex,
@@ -76,7 +72,7 @@ export async function addVariant(productId: string, variantData: { color_name: s
 
 export async function deleteVariant(productId: string, variantId: string) {
     try {
-        await set(ref(db, `product_variants/${variantId}`), null)
+        await serverDbSet(`product_variants/${variantId}`, null)
         revalidatePath(`/admin/products/${productId}`)
         return { success: true }
     } catch (error: any) {
@@ -87,7 +83,7 @@ export async function deleteVariant(productId: string, variantId: string) {
 
 export async function updateVariantImages(productId: string, variantId: string, images: string[]) {
     try {
-        await set(ref(db, `product_variants/${variantId}/images`), images)
+        await serverDbSet(`product_variants/${variantId}/images`, images)
         revalidatePath(`/admin/products/${productId}`)
         return { success: true }
     } catch (error: any) {
@@ -95,3 +91,4 @@ export async function updateVariantImages(productId: string, variantId: string, 
         return { error: error.message }
     }
 }
+

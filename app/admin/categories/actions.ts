@@ -1,8 +1,7 @@
 "use server"
 
-import { db } from "@/lib/firebase"
-import { ref, push, set, update } from "firebase/database"
 import { revalidatePath } from "next/cache"
+import { serverDbSet, serverDbUpdate, serverDbPush } from "@/lib/db-server"
 
 function slugify(text: string): string {
     return text
@@ -31,8 +30,7 @@ export async function createCategory(formData: FormData) {
     }
 
     try {
-        const newRef = push(ref(db, "categories"))
-        await set(newRef, {
+        await serverDbPush("categories", {
             name,
             slug,
             created_at: new Date().toISOString()
@@ -61,7 +59,7 @@ export async function updateCategory(id: string, formData: FormData) {
     }
 
     try {
-        await update(ref(db, `categories/${id}`), {
+        await serverDbUpdate(`categories/${id}`, {
             name,
             slug,
             updated_at: new Date().toISOString()
@@ -77,7 +75,7 @@ export async function updateCategory(id: string, formData: FormData) {
 
 export async function deleteCategory(id: string) {
     try {
-        await set(ref(db, `categories/${id}`), null)
+        await serverDbSet(`categories/${id}`, null)
     } catch (error: any) {
         return { error: error.message }
     }
@@ -86,3 +84,4 @@ export async function deleteCategory(id: string) {
     revalidatePath("/catalogo")
     return { success: true }
 }
+
