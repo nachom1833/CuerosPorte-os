@@ -113,7 +113,7 @@ export function AboutSection() {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold text-foreground">Canal de Contacto</h4>
-                                    <p className="text-sm text-foreground/70">contacto@cuerosportenos.com.ar</p>
+                                    <p className="text-sm text-foreground/70">cuerosporteños@ciudad.com.ar</p>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ export function AboutSection() {
                         <div className="pt-4 flex flex-wrap gap-4">
                             <Button asChild className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90">
                                 <a 
-                                    href="https://wa.me/5491134567890?text=Hola!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta%20sobre%20sus%20productos%20de%20cuero%20y%20compras." 
+                                    href="https://wa.me/541140240594?text=Hola!%20Me%20gustar%C3%ADa%20hacer%20una%20consulta%20sobre%20sus%20productos%20de%20cuero%20y%20compras." 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2 font-semibold"
@@ -181,7 +181,7 @@ export function AboutSection() {
                             <div className="z-10 w-full flex justify-end">
                                 <Button asChild size="sm" variant="secondary" className="rounded-full bg-background/90 dark:bg-primary/90 text-foreground hover:bg-background shadow border border-border/30">
                                     <a 
-                                        href="https://maps.google.com/?q=Manzoni+162+Villa+Luro+Buenos+Aires" 
+                                        href="https://www.google.com/maps/place/Cueros+Porte%C3%B1os+SRL/@-34.6393972,-58.4990909,17z/data=!4m15!1m8!3m7!1s0x95bcc9b0436c2a6b:0x7ef3ddad2970ec46!2sManzoni+162,+C1407ICD+Cdad.+Aut%C3%B3noma+de+Buenos+Aires!3b1!8m2!3d-34.6393821!4d-58.498977!16s%2Fg%2F11snpy80pj!3m5!1s0x95bcc9b04486cac7:0x526312f73dcf52f4!8m2!3d-34.6393821!4d-58.498977!16s%2Fg%2F1td9rq7p?entry=ttu&g_ep=EgoyMDI2MDUyNi4wIKXMDSoASAFQAw%3D%3D" 
                                         target="_blank" 
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 text-xs font-semibold"

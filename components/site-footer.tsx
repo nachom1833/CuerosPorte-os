@@ -36,7 +36,7 @@ export function SiteFooter() {
                             </li>
                             <li className="flex items-start gap-2.5">
                                 <Clock className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                                <span>Lun. a Vie. 09:00 - 18:00 hs<br />Sáb. 09:00 - 13:00 hs</span>
+                                <span>Lun. a Vie. 09:00 - 18:00 hs</span>
                             </li>
                         </ul>
                     </div>
@@ -49,22 +49,22 @@ export function SiteFooter() {
                         <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li>
                                 <a 
-                                    href="mailto:contacto@cuerosportenos.com.ar"
+                                    href="mailto:cuerosporteños@ciudad.com.ar"
                                     className="flex items-center gap-2.5 hover:text-secondary hover:underline transition-colors"
                                 >
                                     <Mail className="h-4 w-4 text-secondary shrink-0" />
-                                    <span className="truncate">contacto@cuerosportenos.com.ar</span>
+                                    <span className="truncate">cuerosporteños@ciudad.com.ar</span>
                                 </a>
                             </li>
                             <li>
                                 <a 
-                                    href="https://wa.me/5491134567890" 
+                                    href="https://wa.me/541140240594" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-2.5 hover:text-secondary hover:underline transition-colors"
                                 >
                                     <MessageCircle className="h-4 w-4 text-secondary shrink-0" />
-                                    <span>+54 9 11 3456 7890</span>
+                                    <span>+54 11 4024 0594</span>
                                 </a>
                             </li>
                         </ul>

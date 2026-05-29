@@ -23,10 +23,12 @@ export default async function CatalogPage({
 
     const productsSnap = await get(ref(db, "products"))
     const productsVal = productsSnap.val() || {}
-    let rawProducts = Object.keys(productsVal).map(key => ({
-        id: key,
-        ...productsVal[key]
-    }))
+    let rawProducts = Object.keys(productsVal)
+        .map(key => ({
+            id: key,
+            ...productsVal[key]
+        }))
+        .filter(p => p.category !== "Cinturones")
 
     if (category) {
         rawProducts = rawProducts.filter(p => p.category === category)
@@ -44,7 +46,7 @@ export default async function CatalogPage({
         product_variants: rawVariants.filter(v => v.product_id === p.id && v.is_active)
     })) as any[]
 
-    const categories = ["Bolsos", "Carteras", "Cinturones", "Billeteras", "Accesorios"]
+    const categories = ["Bolsos", "Carteras", "Billeteras", "Accesorios"]
 
     return (
         <div className="container px-4 sm:px-8 py-12">

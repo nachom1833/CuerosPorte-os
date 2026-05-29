@@ -18,15 +18,6 @@
       "description": "Diseño clásico y funcional con correa ajustable. Un accesorio atemporal fabricado con los mejores cueros seleccionados, ideal para uso diario por su comodidad y sofisticación.",
       "created_at": "2026-05-22T23:05:00.000Z"
     },
-    "prod_3": {
-      "name": "Cinturón Clásico de Vestir",
-      "slug": "cinturon-clasico-vestir",
-      "category": "Cinturones",
-      "material": "Cuero de Suela de 4mm",
-      "dimensions": "Ancho: 3.5cm (Talles 85 al 115)",
-      "description": "Cinturón de cuero de una sola pieza sin costuras, pulido a mano y con hebilla de bronce pulido. Durabilidad garantizada de por vida.",
-      "created_at": "2026-05-22T23:10:00.000Z"
-    },
     "prod_4": {
       "name": "Billetera Minimalista Porteña",
       "slug": "billetera-minimalista-portena",
@@ -77,26 +68,6 @@
       ],
       "is_active": true,
       "created_at": "2026-05-22T23:06:00.000Z"
-    },
-    "var_5": {
-      "product_id": "prod_3",
-      "color_name": "Negro Satinado",
-      "color_hex": "#1C1C1C",
-      "images": [
-        "https://images.unsplash.com/photo-1624222247344-550fb8ec2780?auto=format&fit=crop&q=80&w=800"
-      ],
-      "is_active": true,
-      "created_at": "2026-05-22T23:10:00.000Z"
-    },
-    "var_6": {
-      "product_id": "prod_3",
-      "color_name": "Marrón Caramelo",
-      "color_hex": "#8B5A2B",
-      "images": [
-        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800"
-      ],
-      "is_active": true,
-      "created_at": "2026-05-22T23:11:00.000Z"
     },
     "var_7": {
       "product_id": "prod_4",

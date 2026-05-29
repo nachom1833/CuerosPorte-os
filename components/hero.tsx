@@ -96,15 +96,15 @@ export function Hero() {
 
                             {/* Email Direct */}
                             <a 
-                                href="mailto:contacto@cuerosportenos.com.ar"
+                                href="mailto:cuerosporteños@ciudad.com.ar"
                                 className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
                             >
                                 <span className="text-[#57472B] flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
                                     <Mail className="h-4 w-4 shrink-0 text-[#92764D]" />
                                     Escríbenos
                                 </span>
-                                <span className="text-sm font-medium text-foreground/90 leading-tight truncate group-hover:underline" title="contacto@cuerosportenos.com.ar">
-                                    contacto@cueros...
+                                <span className="text-sm font-medium text-foreground/90 leading-tight truncate group-hover:underline" title="cuerosporteños@ciudad.com.ar">
+                                    cuerosporteños@ciu...
                                 </span>
                             </a>
 

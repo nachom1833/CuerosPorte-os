@@ -10,11 +10,12 @@ export async function FeaturedProducts() {
     const productsSnap = await get(ref(db, "products"))
     const productsVal = productsSnap.val() || {}
     const products: Product[] = Object.keys(productsVal)
-        .slice(0, 4)
         .map(key => ({
             id: key,
             ...productsVal[key]
         } as Product))
+        .filter(p => p.category !== "Cinturones")
+        .slice(0, 4)
 
     // 2. Fetch active variants
     const variantsSnap = await get(ref(db, "product_variants"))
