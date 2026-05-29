@@ -7,14 +7,29 @@ import { Plus, FileSpreadsheet } from "lucide-react"
 import { Product } from "@/types/database"
 
 export default async function AdminDashboard() {
-    const productsSnap = await get(ref(db, "products"))
+    const [productsSnap, variantsSnap] = await Promise.all([
+        get(ref(db, "products")),
+        get(ref(db, "product_variants"))
+    ])
+
     const productsVal = productsSnap.val() || {}
+    const variantsVal = variantsSnap.val() || {}
+
+    const rawVariants = Object.keys(variantsVal).map(key => ({
+        id: key,
+        ...variantsVal[key]
+    }))
+
     const products = Object.keys(productsVal)
-        .map(key => ({
-            id: key,
-            ...productsVal[key]
-        }))
-        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) as Product[]
+        .map(key => {
+            const productVariants = rawVariants.filter(v => v.product_id === key && v.is_active)
+            return {
+                id: key,
+                ...productsVal[key],
+                variants: productVariants
+            }
+        })
+        .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) as any[]
 
     return (
         <div className="space-y-6">
@@ -41,6 +56,7 @@ export default async function AdminDashboard() {
                             <TableHead>Nombre</TableHead>
                             <TableHead>Slug</TableHead>
                             <TableHead>Categoría</TableHead>
+                            <TableHead>Colores</TableHead>
                             <TableHead className="text-right">Acciones</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -49,8 +65,24 @@ export default async function AdminDashboard() {
                             products.map((product) => (
                                 <TableRow key={product.id}>
                                     <TableCell className="font-medium">{product.name}</TableCell>
-                                    <TableCell>{product.slug}</TableCell>
+                                    <TableCell className="font-mono text-xs opacity-75">{product.slug}</TableCell>
                                     <TableCell>{product.category}</TableCell>
+                                    <TableCell>
+                                        <div className="flex -space-x-1.5 overflow-hidden py-1">
+                                            {product.variants && product.variants.length > 0 ? (
+                                                product.variants.map((v: any) => (
+                                                    <div 
+                                                        key={v.id} 
+                                                        className="inline-block h-6 w-6 rounded-full ring-2 ring-background border border-black/10 shadow-sm cursor-help"
+                                                        style={{ backgroundColor: v.color_hex }}
+                                                        title={v.color_name}
+                                                    />
+                                                ))
+                                            ) : (
+                                                <span className="text-xs text-muted-foreground italic">Sin colores</span>
+                                            )}
+                                        </div>
+                                    </TableCell>
                                     <TableCell className="text-right">
                                         <Button variant="ghost" size="sm" asChild>
                                             <Link href={`/admin/products/${product.id}`}>Editar</Link>
@@ -60,7 +92,7 @@ export default async function AdminDashboard() {
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={4} className="h-24 text-center">
+                                <TableCell colSpan={5} className="h-24 text-center">
                                     No hay productos registrados.
                                 </TableCell>
                             </TableRow>
