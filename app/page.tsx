@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <AboutSection />
       <Suspense fallback={<div className="py-24 text-center">Cargando destacados...</div>}>
         <FeaturedProducts />
       </Suspense>
-      <AboutSection />
     </>
   )
 }
