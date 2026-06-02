@@ -48,10 +48,10 @@ export function ProductCard({ product, variant }: ProductCardProps) {
     return (
         <Link href={`/producto/${product.slug}`} className="group">
             <Card className="h-full border-0 shadow-none bg-transparent overflow-hidden">
-                <CardContent className="p-0 relative aspect-[4/5] bg-secondary/50 rounded-xl overflow-hidden mb-4">
+                <CardContent className="p-0 relative aspect-[4/5] bg-[#F5EFE6] rounded-2xl overflow-hidden mb-4 border border-[#DDC8A6]/20">
                     {images[0] ? (
                         <>
-                            {/* Primera imagen principal */}
+                            {/* Primary image */}
                             <Image
                                 src={images[0]}
                                 alt={product.name}
@@ -62,7 +62,7 @@ export function ProductCard({ product, variant }: ProductCardProps) {
                                         : "group-hover:scale-105"
                                 }`}
                             />
-                            {/* Segunda imagen alternativa revelada al hacer hover */}
+                            {/* Hover alternative image */}
                             {images[1] && (
                                 <Image
                                     src={images[1]}
@@ -73,21 +73,21 @@ export function ProductCard({ product, variant }: ProductCardProps) {
                             )}
                         </>
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-secondary/30">
-                            No Image
+                        <div className="w-full h-full flex items-center justify-center text-[#251D13]/55 bg-[#F5EFE6]">
+                            Sin Imagen
                         </div>
                     )}
                     <div className="absolute top-4 left-4">
-                        <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm text-xs font-normal">
+                        <Badge variant="secondary" className="bg-[#FBF8F3]/95 backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider rounded-md text-[#251D13] border border-[#DDC8A6]/40">
                             {product.category}
                         </Badge>
                     </div>
                 </CardContent>
-                <CardFooter className="p-0 flex flex-col items-start gap-1">
-                    <h3 className="font-medium text-lg leading-none group-hover:underline decoration-1 underline-offset-4">{product.name}</h3>
-                    <p className="text-sm text-muted-foreground">{product.material}</p>
-                    <div className="flex items-center text-sm font-medium mt-1 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
-                        Ver detalle <ArrowRight className="ml-1 h-3 w-3" />
+                <CardFooter className="p-0 flex flex-col items-start gap-1.5 pt-1">
+                    <h3 className="font-serif font-bold text-lg leading-tight text-[#251D13] group-hover:text-[#92764D] transition-colors">{product.name}</h3>
+                    <p className="text-xs text-[#251D13]/70 uppercase tracking-wider font-sans">{product.material}</p>
+                    <div className="flex items-center text-xs font-bold uppercase tracking-wider mt-1 bg-[#251D13] text-[#DDC8A6] px-5 py-2.5 border border-[#251D13] opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 rounded-full shadow-md hover:bg-[#251D13]/90">
+                        Usar como inspiración <ArrowRight className="ml-2 h-3.5 w-3.5" />
                     </div>
                 </CardFooter>
             </Card>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Toaster } from "@/components/ui/sonner"
+import { WhatsappBubble } from "@/components/whatsapp-bubble";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default function RootLayout({
         </main>
         <SiteFooter />
         <Toaster />
+        <WhatsappBubble />
       </body>
     </html>
   );

@@ -4,18 +4,26 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { MapPin, Mail, Instagram, Star, ShieldCheck, ArrowRight } from "lucide-react"
+import { ShieldCheck, ArrowRight, Layers, Award, Box } from "lucide-react"
 
 export function Hero() {
+    const handleScrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+        const element = document.getElementById("contacto")
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" })
+        }
+    };
+
     return (
-        <section className="relative w-full min-h-[90vh] lg:min-h-[85vh] flex items-center bg-background dark:bg-[#251D13] py-16 lg:py-0 overflow-hidden border-b border-border/20">
-            {/* Background texture accents */}
+        <section className="relative w-full min-h-[85vh] flex items-center bg-[#FBF8F3] py-16 lg:py-0 overflow-hidden border-b border-[#DDC8A6]/30">
+            {/* Subtle warm architectural pattern */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#92764D_1px,transparent_1px)] [background-size:24px_24px]" />
 
             <div className="container relative z-10 px-4 sm:px-8 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     
-                    {/* Left Column: Brand, Story & Trust Credentials */}
+                    {/* Left Column: B2B Brand Pitch */}
                     <div className="lg:col-span-7 space-y-8 flex flex-col justify-center text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -23,91 +31,82 @@ export function Hero() {
                             transition={{ duration: 0.8 }}
                             className="space-y-4"
                         >
-                            
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-foreground leading-[1.15]">
-                                Artesanía en Cuero <br />
-                                <span className="text-[#92764D] italic font-normal font-serif">Diseño Atemporal</span>
+                            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                                Marroquinería Fina para Empresas
+                            </span>
+                            <h1 className="text-4xl sm:text-5xl lg:text-6.5xl font-serif font-bold tracking-tight text-[#251D13] leading-[1.1]">
+                                Acompañamiento y <br />
+                                <span className="text-[#92764D] italic font-normal font-serif">desarrollo de marroquinería</span> <br />
+                                para empresas.
                             </h1>
                         </motion.div>
 
                         <motion.p
-                            className="text-lg text-foreground/80 leading-relaxed max-w-xl"
+                            className="text-base sm:text-lg text-[#251D13]/80 leading-relaxed max-w-xl"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.15 }}
                         >
-                            Cada pieza nace en nuestro taller de Buenos Aires. Seleccionamos personalmente cueros nobles argentinos para crear marroquinería que cuenta tu historia. Venta al público y producción a medida para empresas.
+                            Con 25 años de experiencia en la industria, materializamos tus ideas con productos exclusivos y totalmente personalizables para potenciar el lanzamiento de tu marca.
                         </motion.p>
 
-                        {/* CTA Buttons */}
+                        {/* CTA Buttons - High Contrast B2B Conversion */}
                         <motion.div
                             className="flex flex-wrap gap-4 pt-2"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                         >
-                            <Button asChild size="lg" className="rounded-full px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 bg-primary text-primary-foreground hover:bg-primary/95 group">
-                                <Link href="/catalogo" className="flex items-center gap-2">
-                                    Explorar Catálogo
+                            <Button asChild size="lg" className="rounded-full px-8 text-base shadow-lg transition-all duration-300 bg-[#251D13] text-[#DDC8A6] hover:bg-[#251D13]/90 hover:text-white group cursor-pointer border-none">
+                                <a href="#contacto" onClick={handleScrollToContact} className="flex items-center gap-2">
+                                    Desarrollar un Proyecto
                                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                                </a>
                             </Button>
-                            <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base bg-background/50 backdrop-blur-sm border-border hover:bg-background/80">
-                                <a href="#taller">Conocer El Taller</a>
+                            <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base bg-transparent border-[#251D13] text-[#251D13] hover:bg-[#DDC8A6]/20 transition-all">
+                                <Link href="/catalogo">Ver Catálogo de Inspiración</Link>
                             </Button>
                         </motion.div>
 
-                        {/* Direct Trust Credentials Block */}
+                        {/* B2B Trust Credentials Block */}
                         <motion.div
-                            className="pt-8 border-t border-border/40 grid grid-cols-2 sm:grid-cols-4 gap-6"
+                            className="pt-8 border-t border-[#DDC8A6]/40 grid grid-cols-1 sm:grid-cols-3 gap-6"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 0.45 }}
                         >
-                            {/* Taller Location Badge */}
-                            <a 
-                                href="#taller"
-                                className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
-                            >
-                                <span className="text-[#57472B] flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
-                                    <MapPin className="h-4 w-4 shrink-0 text-[#92764D]" />
-                                    El Taller
-                                </span>
-                                <span className="text-sm font-medium text-foreground/90 leading-tight group-hover:underline">
-                                    Villa Luro, CABA
-                                </span>
-                            </a>
+                            {/* Credential 1 */}
+                            <div className="flex gap-3 items-start">
+                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                    <Box className="h-4 w-4" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Taller de Alta Gama</span>
+                                    <span className="text-[11px] text-[#251D13]/70">Manufactura propia en Buenos Aires</span>
+                                </div>
+                            </div>
 
-                            {/* Instagram Link */}
-                            <a 
-                                href="https://www.instagram.com/cueros_port" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
-                            >
-                                <span className="text-[#57472B] flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
-                                    <Instagram className="h-4 w-4 shrink-0 text-[#92764D]" />
-                                    Comunidad
-                                </span>
-                                <span className="text-sm font-medium text-foreground/90 leading-tight group-hover:underline">
-                                    @cueros_port
-                                </span>
-                            </a>
+                            {/* Credential 2 */}
+                            <div className="flex gap-3 items-start">
+                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                    <Layers className="h-4 w-4" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Diseños a Medida</span>
+                                    <span className="text-[11px] text-[#251D13]/70">Grabados de logo y medidas personalizadas</span>
+                                </div>
+                            </div>
 
-                            {/* Email Direct */}
-                            <a 
-                                href="mailto:cuerosporteños@ciudad.com.ar"
-                                className="group flex flex-col gap-1.5 p-1 rounded-lg hover:bg-secondary/10 transition-colors duration-200"
-                            >
-                                <span className="text-[#57472B] flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
-                                    <Mail className="h-4 w-4 shrink-0 text-[#92764D]" />
-                                    Escríbenos
-                                </span>
-                                <span className="text-sm font-medium text-foreground/90 leading-tight truncate group-hover:underline" title="cuerosporteños@ciudad.com.ar">
-                                    cuerosporteños@ciu...
-                                </span>
-                            </a>
-
+                            {/* Credential 3 */}
+                            <div className="flex gap-3 items-start">
+                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                    <Award className="h-4 w-4" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">25 Años de Experiencia</span>
+                                    <span className="text-[11px] text-[#251D13]/70">Garantía total en costura y terminaciones</span>
+                                </div>
+                            </div>
                         </motion.div>
                     </div>
 
@@ -119,35 +118,35 @@ export function Hero() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.3 }}
                         >
-                            {/* Main provided product image: Portafolio 3 fuelles */}
-                            <div className="absolute top-0 right-0 w-[82%] h-[78%] rounded-2xl overflow-hidden shadow-2xl border border-border/20 z-10 group bg-secondary/10">
+                            {/* Main product image: Portafolio 3 fuelles */}
+                            <div className="absolute top-0 right-0 w-[82%] h-[78%] rounded-2xl overflow-hidden shadow-2xl border border-[#DDC8A6]/20 z-10 group bg-[#F5EFE6]">
                                 <Image
                                     src="/images/products/portafolio 3 fuelles.jpeg"
-                                    alt="Portafolio 3 fuelles Cueros Porteños"
+                                    alt="Desarrollo corporativo Cueros Porteños"
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out transition-all"
                                     priority
                                 />
                             </div>
 
-                            {/* Overlapping provided product image: Necesaire */}
-                            <div className="absolute bottom-0 left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-2xl border-4 border-background z-20 group bg-secondary/10">
+                            {/* Overlapping product image: Necesaire */}
+                            <div className="absolute bottom-0 left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#FBF8F3] z-20 group bg-[#F5EFE6]">
                                 <Image
                                     src="/images/products/necesaire.jpeg"
-                                    alt="Necesaire de cuero genuino hecho a mano"
+                                    alt="Necesaire de cuero personalizable"
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out transition-all"
                                 />
                             </div>
 
-                            {/* Handmade Floating Badge */}
+                            {/* Handmade Floating Badge - Monochromatic and Sleek */}
                             <motion.div 
-                                className="absolute -bottom-4 right-10 bg-accent text-accent-foreground px-5 py-3 shadow-lg z-30 flex flex-col items-center justify-center"
+                                className="absolute -bottom-4 right-10 bg-[#92764D] text-white px-5 py-3 shadow-lg z-30 flex flex-col items-center justify-center rounded-lg border border-[#DDC8A6]"
                                 style={{ transform: "rotate(3deg)" }}
                                 whileHover={{ scale: 1.05, rotate: "0deg" }}
                                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
                             >
-                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-90 leading-none">Hecho a Mano</span>
+                                <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-90 leading-none">Trayectoria Premium</span>
                                 <span className="text-sm font-serif font-semibold mt-1">Garantía Porteña</span>
                             </motion.div>
                         </motion.div>
@@ -158,5 +157,3 @@ export function Hero() {
         </section>
     )
 }
-
-
