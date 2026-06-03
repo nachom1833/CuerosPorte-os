@@ -19,7 +19,7 @@ const steps = [
         num: "03",
         icon: Award,
         title: "Desarrollo",
-        description: "Respaldados por nuestros 25 años de experiencia, garantizamos calidad premium en cada lanzamiento."
+        description: "Respaldados por nuestros 31 años de experiencia, garantizamos calidad premium en cada lanzamiento."
     }
 ]
 

@@ -43,7 +43,7 @@ export async function FeaturedProducts() {
                         Destacados
                     </h2>
                     <p className="text-muted-foreground text-sm sm:text-base max-w-md">
-                        Piezas favoritas de nuestra colección artesanal hechas para perdurar.
+                        Piezas favoritas de nuestra colección hechas para perdurar.
                     </p>
                 </div>
 

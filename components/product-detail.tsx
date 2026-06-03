@@ -234,51 +234,14 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                         </p>
                     </div>
 
-                    {/* B2B Adaptability Disclaimer Banner */}
-                    <div className="bg-[#F5EFE6]/50 border border-[#DDC8A6]/40 p-4 sm:p-5 rounded-2xl flex items-start gap-3">
-                        <div className="text-[#92764D] shrink-0 mt-0.5">
-                            <Send className="h-4 w-4 stroke-1.5" />
-                        </div>
-                        <p className="text-sm text-[#251D13]/85 leading-relaxed font-sans">
-                            Este modelo es un punto de partida. Lo adaptamos a los colores, medidas y logo de tu marca.
-                        </p>
-                    </div>
+             
 
                     <div className="space-y-6">
-                        <div>
-                            <h3 className="text-xs font-bold uppercase tracking-wider text-[#92764D] mb-3 font-sans">Colores Ilustrativos</h3>
-                            <div className="flex flex-wrap gap-3">
-                                {variants.map((variant) => (
-                                    <button
-                                        key={variant.id}
-                                        onClick={() => {
-                                            setSelectedVariant(variant)
-                                            setActiveIdx(0)
-                                        }}
-                                        className={cn(
-                                            "w-9 h-9 rounded-full border-2 focus:outline-none focus:ring-1 focus:ring-[#92764D] focus:ring-offset-2 transition-all cursor-pointer",
-                                            selectedVariant?.id === variant.id
-                                                ? "border-[#251D13] scale-110 shadow-sm"
-                                                : "border-transparent hover:scale-110"
-                                        )}
-                                        style={{ backgroundColor: variant.color_hex }}
-                                        title={variant.color_name}
-                                        aria-label={`Select color ${variant.color_name}`}
-                                    />
-                                ))}
-                            </div>
-                            {selectedVariant && (
-                                <p className="mt-2.5 text-xs text-[#251D13]/70">
-                                    Ejemplo en: <span className="font-semibold text-[#251D13]">{selectedVariant.color_name}</span>
-                                </p>
-                            )}
-                        </div>
-
                         <div className="space-y-4 pt-6 border-t border-[#DDC8A6]/40">
                             <div className="grid grid-cols-2 gap-4 text-xs font-sans">
                                 <div>
                                     <span className="block text-[#92764D] uppercase tracking-wider font-bold mb-0.5">Material Base</span>
-                                    <span className="font-bold text-sm text-[#251D13]">{product.material || "Cuero Genuino Argentino"}</span>
+                                    <span className="font-bold text-sm text-[#251D13]">{product.material || "Cuero"}</span>
                                 </div>
                                 <div>
                                     <span className="block text-[#92764D] uppercase tracking-wider font-bold mb-0.5">Dimensiones Originales</span>

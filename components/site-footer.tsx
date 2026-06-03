@@ -20,11 +20,11 @@ export function SiteFooter() {
                             className="object-contain h-16 sm:h-20 w-auto brightness-0 invert transition-transform hover:scale-[1.02] duration-300"
                         />
                         <p className="text-sm opacity-80 leading-relaxed max-w-xs font-sans font-normal">
-                            Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia artesanal de dedicación, textura y excelencia. Venta al público y corporativa.
+                            Marroquinería de alta gama nacida y confeccionada en nuestro Taller de Villa Luro, Buenos Aires. Cada pieza representa una herencia de dedicación, textura y excelencia. Venta al público y corporativa.
                         </p>
                     </div>
 
-                    {/* Column 2: Showroom & Hours */}
+                    {/* Column 2: Taller & Hours */}
                     <div className="space-y-4">
                         <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             El Taller
@@ -36,7 +36,7 @@ export function SiteFooter() {
                             </li>
                             <li className="flex items-start gap-2.5">
                                 <Clock className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
-                                <span>Lun. a Vie. 09:00 - 18:00 hs</span>
+                                <span>Lun. a Vie. 09:00 - 16:00 hs</span>
                             </li>
                         </ul>
                     </div>
@@ -49,11 +49,11 @@ export function SiteFooter() {
                         <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li>
                                 <a 
-                                    href="mailto:cuerosporteños@ciudad.com.ar"
+                                    href="mailto:cuerosport@ciudad.com.ar"
                                     className="flex items-center gap-2.5 hover:text-secondary hover:underline transition-colors"
                                 >
                                     <Mail className="h-4 w-4 text-secondary shrink-0" />
-                                    <span className="truncate">cuerosporteños@ciudad.com.ar</span>
+                                    <span className="truncate">cuerosport@ciudad.com.ar</span>
                                 </a>
                             </li>
                             <li>
@@ -76,7 +76,7 @@ export function SiteFooter() {
                             Comunidad
                         </h4>
                         <p className="text-sm opacity-80 leading-relaxed font-sans font-normal">
-                            Seguí nuestro proceso artesanal y enterate de nuevos ingresos.
+                            Seguí nuestro proceso de producción y enterate de nuevos ingresos.
                         </p>
                         <a 
                             href="https://www.instagram.com/cueros_port" 

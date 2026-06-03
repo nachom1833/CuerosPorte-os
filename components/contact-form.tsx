@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label"
 import { UploadCloud, File, X, CheckCircle, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { motion, AnimatePresence } from "framer-motion"
+import { db } from "@/lib/firebase"
+import { ref, push, set } from "firebase/database"
 
 interface ContactFormProps {
     id?: string
@@ -69,20 +71,51 @@ export function ContactForm({ id }: ContactFormProps) {
 
         setIsSubmitting(true)
         
-        // Simulate API B2B inquiry delivery
-        await new Promise(resolve => setTimeout(resolve, 1800))
-        
-        setIsSubmitting(false)
-        setSubmitted(true)
-        toast.success("¡Solicitud enviada con éxito! Un asesor se comunicará a la brevedad.")
+        try {
+            // Guardar en la base de datos de Firebase
+            const contactRef = ref(db, "contact_messages")
+            const newContactRef = push(contactRef)
+            await set(newContactRef, {
+                name,
+                company,
+                email,
+                phone,
+                projectDetails,
+                createdAt: new Date().toISOString(),
+                status: "nuevo"
+            })
 
-        // Reset fields
-        setName("")
-        setCompany("")
-        setEmail("")
-        setPhone("")
-        setProjectDetails("")
-        setFiles([])
+            // Crear link de mailto
+            const mailtoSubject = `Nueva consulta de desarrollo - ${company}`
+            const mailtoBody = `Hola Cueros Porteños,\n\nHas recibido una nueva consulta de desarrollo desde el formulario de contacto del sitio web:\n\n` +
+                `- Nombre: ${name}\n` +
+                `- Empresa: ${company}\n` +
+                `- Email de contacto: ${email}\n` +
+                `- Teléfono: ${phone}\n\n` +
+                `Detalles del proyecto:\n${projectDetails}\n\n` +
+                `Saludos.`;
+
+            const mailtoUrl = `mailto:cuerosport@ciudad.com.ar?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`
+            
+            // Redireccionar al link de correo
+            window.location.href = mailtoUrl
+
+            setIsSubmitting(false)
+            setSubmitted(true)
+            toast.success("¡Solicitud generada con éxito! Se abrirá tu aplicación de correo para enviar el mail a cuerosport@ciudad.com.ar.")
+
+            // Limpiar campos
+            setName("")
+            setCompany("")
+            setEmail("")
+            setPhone("")
+            setProjectDetails("")
+            setFiles([])
+        } catch (error: any) {
+            console.error("Error al procesar la solicitud:", error)
+            toast.error("Ocurrió un error al procesar tu solicitud, por favor intenta nuevamente.")
+            setIsSubmitting(false)
+        }
     }
 
     const formatBytes = (bytes: number, decimals = 2) => {

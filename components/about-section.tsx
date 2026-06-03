@@ -21,7 +21,7 @@ export function AboutSection() {
                         <Reveal width="100%" className="h-full">
                             <Image
                                 src="/images/products/carpeta con cierre.jpeg"
-                                alt="Carpeta con cierre de cuero genuino en taller"
+                                alt="Carpeta con cierre de cuero en taller"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -39,7 +39,7 @@ export function AboutSection() {
                         </Reveal>
                         <Reveal delay={0.2}>
                             <p className="text-lg text-foreground/80 leading-relaxed font-sans font-normal">
-                                En Cueros Porteños, diseñamos soluciones de marroquinería que materializan el prestigio de tu empresa. Entendemos que cada obsequio corporativo, artículo de recordación o desarrollo promocional premium debe reflejar excelencia; por eso combinamos técnicas de alta costura artesanal con un enfoque puramente corporativo para acompañar tus lanzamientos con distinción.
+                                En Cueros Porteños, diseñamos soluciones de marroquinería que materializan el prestigio de tu empresa. Entendemos que cada obsequio corporativo, artículo de recordación o desarrollo promocional premium debe reflejar excelencia.
                             </p>
                         </Reveal>
                     </div>
@@ -51,7 +51,7 @@ export function AboutSection() {
                         <Reveal width="100%" className="h-full">
                             <Image
                                 src="/images/products/portanotebook.jpeg"
-                                alt="Porta notebook de cuero vacuno curtido vegetal"
+                                alt="Porta notebook de cuero"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -64,12 +64,12 @@ export function AboutSection() {
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-foreground leading-tight">
-                                25 Años de Maestría al Servicio de tu Empresa
+                                31 Años de Maestría al Servicio de tu Empresa
                             </h2>
                         </Reveal>
                         <Reveal delay={0.2}>
                             <p className="text-lg text-foreground/80 leading-relaxed font-sans font-normal">
-                                Cada pieza nace de manera directa en nuestro taller de Villa Luro, Buenos Aires, fabricada bajo estrictos estándares corporativos. Con más de dos décadas de trayectoria, seleccionamos personalmente cueros legítimos argentinos y herrajes macizos para garantizar piezas únicas de máxima durabilidad, grabadas a fuego y personalizadas según los requerimientos específicos de tu marca.
+                                Cada pieza nace de manera directa en nuestro taller de Villa Luro, Buenos Aires, fabricada bajo estrictos estándares corporativos. Con más de tres décadas de trayectoria, seleccionamos personalmente cuero y herrajes macizos para garantizar piezas únicas de máxima durabilidad, personalizadas según los requerimientos específicos de tu marca.
                             </p>
                         </Reveal>
                     </div>
@@ -79,7 +79,7 @@ export function AboutSection() {
                 <div id="ubicacion" className="space-y-8 scroll-mt-24">
                     <div className="text-center max-w-xl mx-auto space-y-3">
                         <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
-                            Showroom & Taller
+                            Taller
                         </span>
                         <h3 className="text-3xl font-serif font-bold text-[#251D13]">
                             Dónde encontrarnos
@@ -129,7 +129,7 @@ export function AboutSection() {
                         >
                             <Image
                                 src="/images/products/portafolio 1 fuelle.jpeg"
-                                alt="Portafolio de cuero artesanal en mesa de trabajo"
+                                alt="Portafolio de cuero en mesa de trabajo"
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
@@ -153,7 +153,7 @@ export function AboutSection() {
                         >
                             <Image
                                 src="/images/products/tote bag rigida.jpeg"
-                                alt="Tote Bag Rígida de cuero de curtido vegetal"
+                                alt="Tote Bag Rígida de cuero"
                                 fill
                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                             />
@@ -229,7 +229,7 @@ export function AboutSection() {
                             </div>
                             <h3 className="text-xl font-semibold text-foreground">Materiales Nobles</h3>
                             <p className="text-muted-foreground leading-relaxed font-sans font-normal text-sm sm:text-base">
-                                Solo utilizamos cuero 100% genuino de primera calidad y herrajes de bronce macizo seleccionados.
+                                Solo utilizamos cuero de primera calidad y herrajes de bronce macizo seleccionados.
                             </p>
                         </div>
                     </Reveal>

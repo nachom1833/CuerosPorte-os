@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { getCategories } from "@/lib/categories"
+import { Send } from "lucide-react"
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -64,11 +65,22 @@ export default async function CatalogPage({
                 </BreadcrumbList>
             </Breadcrumb>
 
-            <div className="flex flex-col gap-4 mb-8">
-                <h1 className="text-3xl font-bold tracking-tight">Catálogo</h1>
-                <p className="text-muted-foreground">Explora nuestra colección completa.</p>
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-6 border-b border-[#DDC8A6]/20">
+                <div className="space-y-1">
+                    <h1 className="text-3xl sm:text-4xl font-bold font-serif tracking-tight text-[#251D13] dark:text-[#DDC8A6]">Catálogo</h1>
+                    <p className="text-muted-foreground text-sm sm:text-base">Explora nuestra colección completa.</p>
+                </div>
+                {/* B2B Adaptability Disclaimer Banner */}
+                <div className="max-w-md bg-[#F5EFE6]/50 dark:bg-[#2e261a]/30 border border-[#DDC8A6]/40 dark:border-[#57472B]/60 p-4 rounded-xl flex items-start gap-3 shadow-sm">
+                    <div className="text-[#92764D] shrink-0 mt-0.5">
+                        <Send className="h-4 w-4 stroke-1.5" />
+                    </div>
+                    <div className="text-xs sm:text-sm text-[#251D13]/85 dark:text-[#DDC8A6]/85 leading-relaxed font-sans">
+                        <span className="font-bold text-[#92764D] block uppercase tracking-wider text-[10px] mb-0.5">Propuesta Empresarial</span>
+                        Estos modelos son un punto de partida. Los adaptamos a los colores, medidas y logo de tu marca.
+                    </div>
+                </div>
             </div>
-
             <div className="flex flex-col sm:flex-row gap-8">
                 {/* Sidebar Filters */}
                 <aside className="w-full sm:w-64 flex-shrink-0 space-y-8">
@@ -99,6 +111,7 @@ export default async function CatalogPage({
 
                 {/* Product Grid */}
                 <div className="flex-1">
+                    
                     {products && products.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                             {products.map((product) => (

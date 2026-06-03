@@ -47,7 +47,7 @@ export function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.15 }}
                         >
-                            Con 25 años de experiencia en la industria, materializamos tus ideas con productos exclusivos y totalmente personalizables para potenciar el lanzamiento de tu marca.
+                            Con 31 años de experiencia en la industria, materializamos tus ideas con productos exclusivos y totalmente personalizables para potenciar tu equipo de ventas.
                         </motion.p>
 
                         {/* CTA Buttons - High Contrast B2B Conversion */}
@@ -62,51 +62,51 @@ export function Hero() {
                                     Desarrollar un Proyecto
                                     <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                                 </a>
-                            </Button>
-                            <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base bg-transparent border-[#251D13] text-[#251D13] hover:bg-[#DDC8A6]/20 transition-all">
-                                <Link href="/catalogo">Ver Catálogo de Inspiración</Link>
-                            </Button>
-                        </motion.div>
-
-                        {/* B2B Trust Credentials Block */}
-                        <motion.div
-                            className="pt-8 border-t border-[#DDC8A6]/40 grid grid-cols-1 sm:grid-cols-3 gap-6"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.45 }}
-                        >
-                            {/* Credential 1 */}
-                            <div className="flex gap-3 items-start">
-                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
-                                    <Box className="h-4 w-4" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Taller de Alta Gama</span>
-                                    <span className="text-[11px] text-[#251D13]/70">Manufactura propia en Buenos Aires</span>
-                                </div>
-                            </div>
-
-                            {/* Credential 2 */}
-                            <div className="flex gap-3 items-start">
-                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
-                                    <Layers className="h-4 w-4" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Diseños a Medida</span>
-                                    <span className="text-[11px] text-[#251D13]/70">Grabados de logo y medidas personalizadas</span>
-                                </div>
-                            </div>
-
-                            {/* Credential 3 */}
-                            <div className="flex gap-3 items-start">
-                                <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
-                                    <Award className="h-4 w-4" />
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">25 Años de Experiencia</span>
-                                    <span className="text-[11px] text-[#251D13]/70">Garantía total en costura y terminaciones</span>
-                                </div>
-                            </div>
+                             </Button>
+                             <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base bg-transparent border-[#251D13] text-[#251D13] hover:bg-[#DDC8A6]/20 transition-all">
+                                 <Link href="/catalogo">Ver Catálogo de Inspiración</Link>
+                             </Button>
+                         </motion.div>
+ 
+                         {/* B2B Trust Credentials Block */}
+                         <motion.div
+                             className="pt-8 border-t border-[#DDC8A6]/40 grid grid-cols-1 sm:grid-cols-3 gap-6"
+                             initial={{ opacity: 0 }}
+                             animate={{ opacity: 1 }}
+                             transition={{ duration: 1, delay: 0.45 }}
+                         >
+                             {/* Credential 1 */}
+                             <div className="flex gap-3 items-start">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                     <Box className="h-4 w-4" />
+                                 </div>
+                                 <div className="flex flex-col">
+                                     <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Taller de Alta Gama</span>
+                                     <span className="text-[11px] text-[#251D13]/70">Manufactura propia en Buenos Aires</span>
+                                 </div>
+                             </div>
+ 
+                             {/* Credential 2 */}
+                             <div className="flex gap-3 items-start">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                     <Layers className="h-4 w-4" />
+                                 </div>
+                                 <div className="flex flex-col">
+                                     <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">Diseños a Medida</span>
+                                     <span className="text-[11px] text-[#251D13]/70">Grabados de logo y medidas personalizadas</span>
+                                 </div>
+                             </div>
+ 
+                             {/* Credential 3 */}
+                             <div className="flex gap-3 items-start">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                     <Award className="h-4 w-4" />
+                                 </div>
+                                 <div className="flex flex-col">
+                                     <span className="text-xs font-bold uppercase tracking-wider text-[#251D13]">31 Años de Experiencia</span>
+                                     <span className="text-[11px] text-[#251D13]/70">Garantía total en costura y terminaciones</span>
+                                 </div>
+                             </div>
                         </motion.div>
                     </div>
 
@@ -132,8 +132,8 @@ export function Hero() {
                             {/* Overlapping product image: Necesaire */}
                             <div className="absolute bottom-0 left-0 w-[55%] h-[50%] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#FBF8F3] z-20 group bg-[#F5EFE6]">
                                 <Image
-                                    src="/images/products/necesaire.jpeg"
-                                    alt="Necesaire de cuero personalizable"
+                                    src="/images/products/carpeta con cierre(1).jpeg"
+                                    alt="Carpeta con cierre Cueros Porteños"
                                     fill
                                     className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out transition-all"
                                 />

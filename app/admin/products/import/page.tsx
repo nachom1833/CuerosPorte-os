@@ -35,8 +35,8 @@ export default function ExcelImportPage() {
             ["Nombre", "Slug", "Categoría", "Material", "Dimensiones", "Descripción", "Color Nombre", "Color Hex"]
         ]
         const sampleRows = [
-            ["Bolso Portafolio Vintage", "bolso-portafolio-vintage", "Bolsos", "Cuero Vacuno Rústico", "40cm x 30cm x 10cm", "Portafolio de diseño elegante ideal para oficina y viajes de negocios.", "Marrón Caramelo", "#8b5a2b"],
-            ["Billetera Tríptica Clásica", "", "Billeteras", "Cuero Nobuck", "11cm x 8.5cm", "Billetera ultra compacta con tarjetero de seguridad.", "Negro Mate", "#111111"]
+            ["Bolso Portafolio Vintage", "bolso-portafolio-vintage", "Bolsos", "Cuero", "40cm x 30cm x 10cm", "Portafolio de diseño elegante ideal para oficina y viajes de negocios.", "Marrón Caramelo", "#8b5a2b"],
+            ["Billetera Tríptica Clásica", "", "Billeteras", "Cuero", "11cm x 8.5cm", "Billetera ultra compacta con tarjetero de seguridad.", "Negro Mate", "#111111"]
         ]
 
         const ws = XLSX.utils.aoa_to_sheet([...headers, ...sampleRows])
