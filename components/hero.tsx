@@ -18,7 +18,7 @@ export function Hero() {
     return (
         <section className="relative w-full min-h-[85vh] flex items-center bg-[#FBF8F3] py-16 lg:py-0 overflow-hidden border-b border-[#DDC8A6]/30">
             {/* Subtle warm architectural pattern */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#92764D_1px,transparent_1px)] [background-size:24px_24px]" />
+            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#856a43_1px,transparent_1px)] [background-size:24px_24px]" />
 
             <div className="container relative z-10 px-4 sm:px-8 mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -31,12 +31,12 @@ export function Hero() {
                             transition={{ duration: 0.8 }}
                             className="space-y-4"
                         >
-                            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                            <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#856a43]">
                                 Marroquinería Fina para Empresas
                             </span>
                             <h1 className="text-4xl sm:text-5xl lg:text-6.5xl font-serif font-bold tracking-tight text-[#251D13] leading-[1.1]">
                                 Acompañamiento y <br />
-                                <span className="text-[#92764D] italic font-normal font-serif">desarrollo de marroquinería</span> <br />
+                                <span className="text-[#856a43] italic font-normal font-serif">desarrollo de marroquinería</span> <br />
                                 para empresas.
                             </h1>
                         </motion.div>
@@ -77,7 +77,7 @@ export function Hero() {
                          >
                              {/* Credential 1 */}
                              <div className="flex gap-3 items-start">
-                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#856a43] shrink-0 border border-[#DDC8A6]/30">
                                      <Box className="h-4 w-4" />
                                  </div>
                                  <div className="flex flex-col">
@@ -88,7 +88,7 @@ export function Hero() {
  
                              {/* Credential 2 */}
                              <div className="flex gap-3 items-start">
-                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#856a43] shrink-0 border border-[#DDC8A6]/30">
                                      <Layers className="h-4 w-4" />
                                  </div>
                                  <div className="flex flex-col">
@@ -99,7 +99,7 @@ export function Hero() {
  
                              {/* Credential 3 */}
                              <div className="flex gap-3 items-start">
-                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#92764D] shrink-0 border border-[#DDC8A6]/30">
+                                 <div className="p-2 bg-[#F5EFE6] rounded-full text-[#856a43] shrink-0 border border-[#DDC8A6]/30">
                                      <Award className="h-4 w-4" />
                                  </div>
                                  <div className="flex flex-col">
@@ -141,7 +141,7 @@ export function Hero() {
 
                             {/* Handmade Floating Badge - Monochromatic and Sleek */}
                             <motion.div 
-                                className="absolute -bottom-4 right-10 bg-[#92764D] text-white px-5 py-3 shadow-lg z-30 flex flex-col items-center justify-center rounded-lg border border-[#DDC8A6]"
+                                className="absolute -bottom-4 right-10 bg-[#856a43] text-white px-5 py-3 shadow-lg z-30 flex flex-col items-center justify-center rounded-lg border border-[#DDC8A6]"
                                 style={{ transform: "rotate(3deg)" }}
                                 whileHover={{ scale: 1.05, rotate: "0deg" }}
                                 transition={{ type: "spring", stiffness: 300, damping: 15 }}

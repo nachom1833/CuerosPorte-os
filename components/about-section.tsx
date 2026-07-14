@@ -30,7 +30,7 @@ export function AboutSection() {
                     </div>
                     <div className="w-full lg:w-1/2 space-y-6">
                         <Reveal>
-                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#92764D]">Filosofía Corporativa</span>
+                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#856a43]">Filosofía Corporativa</span>
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-foreground leading-tight">
@@ -60,7 +60,7 @@ export function AboutSection() {
                     </div>
                     <div className="w-full lg:w-1/2 space-y-6">
                         <Reveal>
-                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#92764D]">Trayectoria Industrial</span>
+                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#856a43]">Trayectoria Industrial</span>
                         </Reveal>
                         <Reveal delay={0.1}>
                             <h2 className="text-3xl md:text-4xl font-serif font-bold tracking-tight text-foreground leading-tight">
@@ -78,12 +78,12 @@ export function AboutSection() {
                 {/* Section 3: Google Maps Embed (WHERE TO FIND US) */}
                 <div id="ubicacion" className="space-y-8 scroll-mt-24">
                     <div className="text-center max-w-xl mx-auto space-y-3">
-                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#856a43]">
                             Taller
                         </span>
-                        <h3 className="text-3xl font-serif font-bold text-[#251D13]">
+                        <h2 className="text-3xl font-serif font-bold text-[#251D13]">
                             Dónde encontrarnos
-                        </h3>
+                        </h2>
                     </div>
                     
                     <div className="relative w-full h-[450px] rounded-2xl overflow-hidden border border-[#DDC8A6]/40 shadow-lg bg-[#F5EFE6]">

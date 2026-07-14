@@ -132,7 +132,7 @@ export function ContactForm({ id }: ContactFormProps) {
             <div className="container px-4 sm:px-8 mx-auto">
                 <div className="max-w-3xl mx-auto">
                     <div className="text-center mb-12 space-y-3">
-                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#856a43]">
                             Contacto Corporativo
                         </span>
                         <h2 className="text-3xl font-bold font-serif tracking-tight text-[#251D13]">
@@ -166,7 +166,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                 placeholder="Ej. Juan Pérez"
                                                 value={name}
                                                 onChange={e => setName(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] focus:ring-1 focus:ring-[#92764D] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] focus:ring-1 focus:ring-[#856a43] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
                                             />
                                         </div>
                                         <div className="space-y-2">
@@ -180,7 +180,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                 placeholder="Ej. Valois Group"
                                                 value={company}
                                                 onChange={e => setCompany(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] focus:ring-1 focus:ring-[#92764D] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] focus:ring-1 focus:ring-[#856a43] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
                                             />
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                 placeholder="Ej. jperez@empresa.com"
                                                 value={email}
                                                 onChange={e => setEmail(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] focus:ring-1 focus:ring-[#92764D] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] focus:ring-1 focus:ring-[#856a43] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
                                             />
                                         </div>
                                         <div className="space-y-2">
@@ -211,7 +211,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                 placeholder="Ej. +54 11 1234 5678"
                                                 value={phone}
                                                 onChange={e => setPhone(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] focus:ring-1 focus:ring-[#92764D] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] focus:ring-1 focus:ring-[#856a43] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30"
                                             />
                                         </div>
                                     </div>
@@ -227,7 +227,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                             placeholder="Detalla el artículo que deseas desarrollar, cantidades estimadas (ej. 200 unidades), plazos y cualquier idea o requerimiento de diseño corporativo que tengas en mente..."
                                             value={projectDetails}
                                             onChange={e => setProjectDetails(e.target.value)}
-                                            className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] focus:ring-1 focus:ring-[#92764D] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30 resize-none"
+                                            className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] focus:ring-1 focus:ring-[#856a43] transition-all bg-[#FBF8F3] text-sm text-[#251D13] placeholder:text-[#251D13]/30 resize-none"
                                         />
                                     </div>
 
@@ -244,7 +244,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                             className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center space-y-2 bg-[#F5EFE6]/40 ${
                                                 isDragOver 
                                                     ? "border-[#251D13] bg-[#DDC8A6]/20" 
-                                                    : "border-[#DDC8A6] hover:border-[#92764D]"
+                                                    : "border-[#DDC8A6] hover:border-[#856a43]"
                                             }`}
                                         >
                                             <input
@@ -255,7 +255,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                 className="hidden"
                                                 accept=".pdf,.png,.jpg,.jpeg,.svg,.ai,.eps,.zip"
                                             />
-                                            <UploadCloud className={`h-8 w-8 transition-colors ${isDragOver ? 'text-[#251D13]' : 'text-[#92764D]'}`} />
+                                            <UploadCloud className={`h-8 w-8 transition-colors ${isDragOver ? 'text-[#251D13]' : 'text-[#856a43]'}`} />
                                             <div className="space-y-1">
                                                 <p className="text-sm font-bold text-[#251D13]">Arrastra archivos aquí o haz clic para subir</p>
                                                 <p className="text-xs text-[#251D13]/60">Soporta logos vectoriales, manuales o referencias (SVG, AI, PDF, PNG, JPG, ZIP)</p>
@@ -282,7 +282,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                                 className="flex items-center justify-between p-2.5 bg-[#F5EFE6]/50 border border-[#DDC8A6]/40 rounded-lg text-xs"
                                                             >
                                                                 <div className="flex items-center gap-2 truncate max-w-[85%]">
-                                                                    <File className="h-4 w-4 text-[#92764D] shrink-0" />
+                                                                    <File className="h-4 w-4 text-[#856a43] shrink-0" />
                                                                     <span className="font-semibold truncate text-[#251D13]">{file.name}</span>
                                                                     <span className="text-[10px] text-[#251D13]/60 shrink-0">({formatBytes(file.size)})</span>
                                                                 </div>
@@ -292,7 +292,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                                                         e.stopPropagation()
                                                                         removeFile(index)
                                                                     }}
-                                                                    className="text-[#92764D] hover:text-[#251D13] p-1 rounded-full transition-colors cursor-pointer"
+                                                                    className="text-[#856a43] hover:text-[#251D13] p-1 rounded-full transition-colors cursor-pointer"
                                                                     aria-label="Remover archivo"
                                                                 >
                                                                     <X className="h-3.5 w-3.5" />
@@ -328,7 +328,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                     exit={{ opacity: 0 }}
                                     className="py-12 flex flex-col items-center justify-center text-center space-y-5"
                                 >
-                                    <div className="p-4 bg-[#F5EFE6] text-[#92764D] rounded-full border border-[#DDC8A6]/20">
+                                    <div className="p-4 bg-[#F5EFE6] text-[#856a43] rounded-full border border-[#DDC8A6]/20">
                                         <CheckCircle className="h-16 w-16 stroke-1.5" />
                                     </div>
                                     <div className="space-y-2 max-w-md">

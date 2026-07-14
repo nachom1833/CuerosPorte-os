@@ -206,7 +206,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                     className={cn(
                                         "relative w-20 h-24 flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 border-2",
                                         activeIdx === idx
-                                            ? "border-[#92764D] scale-[1.03] shadow-sm opacity-100"
+                                            ? "border-[#856a43] scale-[1.03] shadow-sm opacity-100"
                                             : "border-[#DDC8A6]/60 opacity-60 hover:opacity-100 hover:scale-[1.02]"
                                     )}
                                 >
@@ -225,7 +225,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                 {/* Info Section */}
                 <div className="flex flex-col justify-center space-y-8">
                     <div>
-                        <Badge variant="outline" className="mb-4 text-xs font-bold uppercase tracking-wider rounded-md text-[#92764D] border-[#DDC8A6]/60 bg-[#F5EFE6]/50">
+                        <Badge variant="outline" className="mb-4 text-xs font-bold uppercase tracking-wider rounded-md text-[#856a43] border-[#DDC8A6]/60 bg-[#F5EFE6]/50">
                             {product.category}
                         </Badge>
                         <h1 className="text-4xl font-bold font-serif tracking-tight text-[#251D13]">{product.name}</h1>
@@ -240,11 +240,11 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                         <div className="space-y-4 pt-6 border-t border-[#DDC8A6]/40">
                             <div className="grid grid-cols-2 gap-4 text-xs font-sans">
                                 <div>
-                                    <span className="block text-[#92764D] uppercase tracking-wider font-bold mb-0.5">Material Base</span>
+                                    <span className="block text-[#856a43] uppercase tracking-wider font-bold mb-0.5">Material Base</span>
                                     <span className="font-bold text-sm text-[#251D13]">{product.material || "Cuero"}</span>
                                 </div>
                                 <div>
-                                    <span className="block text-[#92764D] uppercase tracking-wider font-bold mb-0.5">Dimensiones Originales</span>
+                                    <span className="block text-[#856a43] uppercase tracking-wider font-bold mb-0.5">Dimensiones Originales</span>
                                     <span className="font-bold text-sm text-[#251D13]">{product.dimensions || "100% Personalizable"}</span>
                                 </div>
                             </div>
@@ -298,16 +298,16 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                             {/* Close button */}
                             <button 
                                 onClick={handleCloseModal}
-                                className="absolute right-4 top-4 text-[#92764D] hover:text-[#251D13] p-1 transition-colors cursor-pointer"
+                                className="absolute right-4 top-4 text-[#856a43] hover:text-[#251D13] p-1 transition-colors cursor-pointer"
                                 aria-label="Cerrar modal"
                             >
                                 <X className="h-5 w-5" />
                             </button>
 
                             <div className="mb-6 space-y-1">
-                                <span className="text-[9px] font-bold tracking-[0.25em] uppercase text-[#92764D]">Cotización B2B</span>
+                                <span className="text-[9px] font-bold tracking-[0.25em] uppercase text-[#856a43]">Cotización B2B</span>
                                 <h2 className="text-xl font-bold font-serif text-[#251D13]">
-                                    Consultar Desarrollo: <span className="text-[#92764D]">{product.name}</span>
+                                    Consultar Desarrollo: <span className="text-[#856a43]">{product.name}</span>
                                 </h2>
                                 <p className="text-xs text-[#251D13]/70 leading-relaxed font-sans">
                                     Déjanos los requerimientos preliminares del proyecto y te cotizaremos un modelo adaptado a tus necesidades corporativas.
@@ -334,7 +334,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     placeholder="Ej. Juan Pérez"
                                                     value={modalName}
                                                     onChange={e => setModalName(e.target.value)}
-                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D]"
+                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43]"
                                                 />
                                             </div>
                                             <div className="space-y-1">
@@ -346,7 +346,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     placeholder="Ej. Valois Group"
                                                     value={modalCompany}
                                                     onChange={e => setModalCompany(e.target.value)}
-                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D]"
+                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43]"
                                                 />
                                             </div>
                                         </div>
@@ -361,7 +361,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     placeholder="ejemplo@empresa.com"
                                                     value={modalEmail}
                                                     onChange={e => setModalEmail(e.target.value)}
-                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D]"
+                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43]"
                                                 />
                                             </div>
                                             <div className="space-y-1">
@@ -373,7 +373,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     placeholder="Ej. +54 11 1234 5678"
                                                     value={modalPhone}
                                                     onChange={e => setModalPhone(e.target.value)}
-                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D]"
+                                                    className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43]"
                                                 />
                                             </div>
                                         </div>
@@ -388,7 +388,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                 placeholder="Ej. 200"
                                                 value={modalQuantity}
                                                 onChange={e => setModalQuantity(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D]"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43]"
                                             />
                                         </div>
 
@@ -401,7 +401,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                 placeholder="Ej. Colores específicos, tamaño modificado, estampado de logo corporativo en bajo relieve..."
                                                 value={modalMessage}
                                                 onChange={e => setModalMessage(e.target.value)}
-                                                className="rounded-lg border-[#DDC8A6] focus:border-[#92764D] text-xs focus:ring-1 focus:ring-[#92764D] resize-none"
+                                                className="rounded-lg border-[#DDC8A6] focus:border-[#856a43] text-xs focus:ring-1 focus:ring-[#856a43] resize-none"
                                             />
                                         </div>
 
@@ -415,7 +415,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                 onClick={() => fileInputRef.current?.click()}
                                                 className={cn(
                                                     "border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors duration-200 flex flex-col items-center justify-center space-y-1 bg-[#F5EFE6]/30",
-                                                    modalDragOver ? "border-[#251D13] bg-[#DDC8A6]/20" : "border-[#DDC8A6] hover:border-[#92764D]"
+                                                    modalDragOver ? "border-[#251D13] bg-[#DDC8A6]/20" : "border-[#DDC8A6] hover:border-[#856a43]"
                                                 )}
                                             >
                                                 <input 
@@ -426,7 +426,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     className="hidden"
                                                     accept=".pdf,.png,.jpg,.jpeg,.svg,.ai,.eps,.zip"
                                                 />
-                                                <UploadCloud className="h-5 w-5 text-[#92764D]" />
+                                                <UploadCloud className="h-5 w-5 text-[#856a43]" />
                                                 <p className="text-[11px] font-bold text-[#251D13]">Arrastra logos o haz clic para subir</p>
                                             </div>
 
@@ -436,7 +436,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                     {modalFiles.map((file, idx) => (
                                                         <div key={idx} className="flex items-center justify-between p-1.5 bg-[#F5EFE6]/50 border border-[#DDC8A6]/30 rounded-lg text-[10px]">
                                                             <div className="flex items-center gap-1.5 truncate max-w-[85%] text-[#251D13]">
-                                                                <File className="h-3 w-3 shrink-0 text-[#92764D]" />
+                                                                <File className="h-3 w-3 shrink-0 text-[#856a43]" />
                                                                 <span className="truncate font-semibold">{file.name}</span>
                                                                 <span className="text-[9px] text-[#251D13]/60 shrink-0">({formatBytes(file.size)})</span>
                                                             </div>
@@ -446,7 +446,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                                                     e.stopPropagation()
                                                                     removeFile(idx)
                                                                 }}
-                                                                className="text-[#92764D] hover:text-[#251D13] p-0.5 cursor-pointer"
+                                                                className="text-[#856a43] hover:text-[#251D13] p-0.5 cursor-pointer"
                                                             >
                                                                 <X className="h-3 w-3" />
                                                             </button>
@@ -479,7 +479,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                         exit={{ opacity: 0 }}
                                         className="py-10 text-center flex flex-col items-center justify-center space-y-4"
                                     >
-                                        <div className="h-14 w-14 rounded-full bg-[#F5EFE6] text-[#92764D] border border-[#DDC8A6]/20 flex items-center justify-center">
+                                        <div className="h-14 w-14 rounded-full bg-[#F5EFE6] text-[#856a43] border border-[#DDC8A6]/20 flex items-center justify-center">
                                             <Check className="h-7 w-7" />
                                         </div>
                                         <div className="space-y-1">

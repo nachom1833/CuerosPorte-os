@@ -84,7 +84,7 @@ export function ProductCard({ product, variant }: ProductCardProps) {
                     </div>
                 </CardContent>
                 <CardFooter className="p-0 flex flex-col items-start gap-1.5 pt-1">
-                    <h3 className="font-serif font-bold text-lg leading-tight text-[#251D13] group-hover:text-[#92764D] transition-colors">{product.name}</h3>
+                    <h3 className="font-serif font-bold text-lg leading-tight text-[#251D13] group-hover:text-[#856a43] transition-colors">{product.name}</h3>
                     <p className="text-xs text-[#251D13]/70 uppercase tracking-wider font-sans">{product.material}</p>
                     <div className="flex items-center text-xs font-bold uppercase tracking-wider mt-1 bg-[#251D13] text-[#DDC8A6] px-5 py-2.5 border border-[#251D13] opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 rounded-full shadow-md hover:bg-[#251D13]/90">
                         Usar como inspiración <ArrowRight className="ml-2 h-3.5 w-3.5" />

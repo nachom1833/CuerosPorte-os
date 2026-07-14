@@ -16,7 +16,7 @@ export function LogoCloud() {
         <section className="py-16 bg-[#F5EFE6]/40 border-b border-[#DDC8A6]/30">
             <div className="container px-4 sm:px-8 mx-auto">
                 <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
-                    <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                    <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#856a43]">
                         Trayectoria B2B
                     </span>
                     <h2 className="text-xl sm:text-2xl font-bold font-serif tracking-tight text-[#251D13]">
@@ -32,13 +32,13 @@ export function LogoCloud() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: idx * 0.08 }}
-                            className="flex flex-col items-center justify-center p-6 bg-[#FBF8F3] border border-[#DDC8A6]/30 rounded-xl hover:border-[#92764D]/50 transition-all duration-300 group cursor-default h-24 shadow-sm"
+                            className="flex flex-col items-center justify-center p-6 bg-[#FBF8F3] border border-[#DDC8A6]/30 rounded-xl hover:border-[#856a43]/50 transition-all duration-300 group cursor-default h-24 shadow-sm"
                         >
                             {/* High fidelity luxury text logo simulation */}
-                            <span className="text-sm font-bold tracking-[0.18em] text-[#251D13]/70 group-hover:text-[#92764D] transition-colors duration-300 font-sans text-center">
+                            <span className="text-sm font-bold tracking-[0.18em] text-[#251D13]/70 group-hover:text-[#856a43] transition-colors duration-300 font-sans text-center">
                                 {client.name}
                             </span>
-                            <span className="text-[8px] font-medium tracking-[0.05em] text-[#92764D]/60 uppercase mt-1 group-hover:text-[#251D13]/85 transition-colors duration-300">
+                            <span className="text-[8px] font-medium tracking-[0.05em] text-[#856a43]/60 uppercase mt-1 group-hover:text-[#251D13]/85 transition-colors duration-300">
                                 {client.type}
                             </span>
                         </motion.div>

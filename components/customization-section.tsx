@@ -15,7 +15,7 @@ function SerigrafiaIcon() {
             <path d="M5 6h14v2.5H5z" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
             <path d="M12 8.5v3.5M9 12h6" strokeWidth="1.5" strokeLinecap="round" />
             {/* Ink sweep path */}
-            <path d="M5 16.5c3-1.5 5-1.5 8 0s4 1.5 6 0" strokeWidth="2.5" strokeLinecap="round" className="text-[#92764D]/80" />
+            <path d="M5 16.5c3-1.5 5-1.5 8 0s4 1.5 6 0" strokeWidth="2.5" strokeLinecap="round" className="text-[#856a43]/80" />
         </svg>
     )
 }
@@ -61,7 +61,7 @@ function AltaFrecuenciaIcon() {
             {/* Mechanical press head */}
             <path d="M5 5h14v2H5z" fill="currentColor" fillOpacity="0.1" strokeWidth="1.5" />
             {/* High frequency wave representations (oscillating sine waves) */}
-            <path d="M4 12c1.5-3 2.5-3 4 0s2.5 3 4 0 2.5-3 4 0 2.5 3 4 0" strokeWidth="1.5" strokeLinecap="round" className="text-[#92764D]/80" />
+            <path d="M4 12c1.5-3 2.5-3 4 0s2.5 3 4 0 2.5-3 4 0 2.5 3 4 0" strokeWidth="1.5" strokeLinecap="round" className="text-[#856a43]/80" />
             {/* Base material pressed */}
             <path d="M3 18h18" strokeWidth="2" strokeLinecap="round" />
             {/* Heat indicator lines radiating from the waves */}
@@ -113,7 +113,7 @@ export function CustomizationSection() {
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
                     <Reveal width="100%">
-                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D] block">
+                        <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#856a43] block">
                             Servicios de Personalización
                         </span>
                     </Reveal>
@@ -124,7 +124,7 @@ export function CustomizationSection() {
                     </Reveal>
                     <Reveal width="100%" delay={0.2}>
                         {/* Mandatory Descriptive Copy */}
-                        <p className="text-base sm:text-lg lg:text-xl text-[#251D13]/85 dark:text-[#DDC8A6]/85 max-w-2xl mx-auto leading-relaxed italic font-serif border-l-2 border-[#92764D] pl-4 sm:pl-6 text-left my-6">
+                        <p className="text-base sm:text-lg lg:text-xl text-[#251D13]/85 dark:text-[#DDC8A6]/85 max-w-2xl mx-auto leading-relaxed italic font-serif border-l-2 border-[#856a43] pl-4 sm:pl-6 text-left my-6">
                             "Te asesoramos sobre la técnica de grabado ideal según el tipo de tela o cuero y el color que elijas para tu proyecto, asegurando el mejor acabado para tu marca."
                         </p>
                     </Reveal>
@@ -139,24 +139,24 @@ export function CustomizationSection() {
                                 <motion.div
                                     whileHover={{ y: -6 }}
                                     transition={{ duration: 0.3 }}
-                                    className="relative flex flex-col justify-between p-6 bg-[#F5EFE6]/40 dark:bg-[#2e261a]/40 border border-[#DDC8A6]/40 dark:border-[#57472B]/60 rounded-2xl hover:border-[#92764D] dark:hover:border-[#92764D]/80 hover:shadow-lg transition-all duration-300 group h-full"
+                                    className="relative flex flex-col justify-between p-6 bg-[#F5EFE6]/40 dark:bg-[#2e261a]/40 border border-[#DDC8A6]/40 dark:border-[#57472B]/60 rounded-2xl hover:border-[#856a43] dark:hover:border-[#856a43]/80 hover:shadow-lg transition-all duration-300 group h-full"
                                 >
                                     <div>
                                         {/* Icon Wrapper */}
                                         <div className="flex justify-between items-start mb-6">
-                                            <div className="p-3 bg-[#FBF8F3] dark:bg-[#251D13] border border-[#DDC8A6]/40 dark:border-[#57472B]/50 rounded-xl text-[#92764D] group-hover:bg-[#251D13] dark:group-hover:bg-[#DDC8A6] group-hover:text-[#DDC8A6] dark:group-hover:text-[#251D13] transition-all duration-500 shadow-sm">
+                                            <div className="p-3 bg-[#FBF8F3] dark:bg-[#251D13] border border-[#DDC8A6]/40 dark:border-[#57472B]/50 rounded-xl text-[#856a43] group-hover:bg-[#251D13] dark:group-hover:bg-[#DDC8A6] group-hover:text-[#DDC8A6] dark:group-hover:text-[#251D13] transition-all duration-500 shadow-sm">
                                                 <IconComponent />
                                             </div>
-                                            <span className="text-xs font-bold tracking-wider text-[#92764D]/60 uppercase bg-[#FBF8F3] dark:bg-[#251D13] border border-[#DDC8A6]/30 dark:border-[#57472B]/30 px-2 py-0.5 rounded-full">
+                                            <span className="text-xs font-bold tracking-wider text-[#856a43]/60 uppercase bg-[#FBF8F3] dark:bg-[#251D13] border border-[#DDC8A6]/30 dark:border-[#57472B]/30 px-2 py-0.5 rounded-full">
                                                 Técnica 0{idx + 1}
                                             </span>
                                         </div>
 
                                         {/* Titles */}
-                                        <h3 className="text-lg sm:text-xl font-serif font-bold text-[#251D13] dark:text-[#DDC8A6] mb-1 group-hover:text-[#92764D] transition-colors">
+                                        <h3 className="text-lg sm:text-xl font-serif font-bold text-[#251D13] dark:text-[#DDC8A6] mb-1 group-hover:text-[#856a43] transition-colors">
                                             {tech.title}
                                         </h3>
-                                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#92764D] mb-3">
+                                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#856a43] mb-3">
                                             {tech.subtitle}
                                         </p>
 
@@ -176,7 +176,7 @@ export function CustomizationSection() {
                                         <ul className="space-y-1.5 pt-1">
                                             {tech.features.map((feat, fIdx) => (
                                                 <li key={fIdx} className="flex items-center gap-1.5 text-xs text-[#251D13]/80 dark:text-[#DDC8A6]/80 font-sans font-medium">
-                                                    <span className="w-1 h-1 rounded-full bg-[#92764D] shrink-0" />
+                                                    <span className="w-1 h-1 rounded-full bg-[#856a43] shrink-0" />
                                                     <span>{feat}</span>
                                                 </li>
                                             ))}

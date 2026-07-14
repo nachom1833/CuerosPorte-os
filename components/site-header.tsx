@@ -21,7 +21,7 @@ export function SiteHeader() {
                 {/* Right: Catalog Navigation Button */}
                 <Link 
                     href="/catalogo" 
-                    className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider bg-[#251D13] text-[#DDC8A6] hover:bg-[#92764D] hover:text-white rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 cursor-pointer border border-transparent"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold uppercase tracking-wider bg-[#251D13] text-[#DDC8A6] hover:bg-[#856a43] hover:text-white rounded-full transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 cursor-pointer border border-transparent"
                 >
                     <BookOpen className="w-3.5 h-3.5" />
                     <span>Catálogo</span>

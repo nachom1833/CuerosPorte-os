@@ -74,7 +74,7 @@
   --muted: #F5EFE6; /* A lighter, softer sandy cream for muted backgrounds */
   --muted-foreground: #57472B; /* Color Medio Oscuro for highly legible muted text */
   
-  --accent: #92764D; /* Color Medio Claro */
+  --accent: #856a43; /* Color Medio Claro (Ajustado para mejor contraste accesible) */
   --accent-foreground: #FFFFFF;
   
   --destructive: oklch(0.577 0.245 27.325);
@@ -119,7 +119,7 @@
   --muted: #57472B;
   --muted-foreground: #DDC8A6;
   
-  --accent: #92764D;
+  --accent: #ab8e60; /* Ajustado en modo oscuro para contraste óptimo contra el fondo */
   --accent-foreground: #251D13;
   
   --destructive: oklch(0.704 0.191 22.216);

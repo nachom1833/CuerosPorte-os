@@ -28,7 +28,7 @@ export function HowItWorks() {
         <section className="py-24 bg-[#FBF8F3] border-b border-[#DDC8A6]/20">
             <div className="container px-4 sm:px-8 mx-auto">
                 <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                    <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#92764D]">
+                    <span className="text-xs font-bold tracking-[0.25em] uppercase text-[#856a43]">
                         Proceso de Trabajo B2B
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-bold font-serif tracking-tight text-[#251D13]">
@@ -43,24 +43,24 @@ export function HowItWorks() {
                     {steps.map((step, idx) => {
                         const Icon = step.icon
                         return (
-                            <div key={idx} className="relative flex flex-col items-start p-8 bg-[#F5EFE6]/60 border border-[#DDC8A6]/40 rounded-2xl hover:border-[#92764D]/50 transition-all duration-300 group h-full">
+                            <div key={idx} className="relative flex flex-col items-start p-8 bg-[#F5EFE6]/60 border border-[#DDC8A6]/40 rounded-2xl hover:border-[#856a43]/50 transition-all duration-300 group h-full">
                                 {/* Connector arrows for larger screens */}
                                 {idx < 2 && (
-                                    <div className="hidden lg:block absolute -right-6 top-1/2 -translate-y-1/2 z-20 text-[#DDC8A6] group-hover:text-[#92764D]/30 transition-colors">
+                                    <div className="hidden lg:block absolute -right-6 top-1/2 -translate-y-1/2 z-20 text-[#DDC8A6] group-hover:text-[#856a43]/30 transition-colors">
                                         <ChevronRight className="h-8 w-8 stroke-1" />
                                     </div>
                                 )}
 
                                 <div className="flex justify-between items-center w-full mb-6">
-                                    <div className="p-3 bg-[#FBF8F3] border border-[#DDC8A6]/40 rounded-xl text-[#92764D] group-hover:bg-[#251D13] group-hover:text-[#DDC8A6] transition-all duration-500 shadow-sm">
+                                    <div className="p-3 bg-[#FBF8F3] border border-[#DDC8A6]/40 rounded-xl text-[#856a43] group-hover:bg-[#251D13] group-hover:text-[#DDC8A6] transition-all duration-500 shadow-sm">
                                         <Icon className="h-6 w-6 stroke-1.5" />
                                     </div>
-                                    <span className="text-4xl font-bold tracking-tight text-[#92764D]/15 select-none font-serif">
+                                    <span className="text-4xl font-bold tracking-tight text-[#856a43]/15 select-none font-serif">
                                         {step.num}
                                     </span>
                                 </div>
 
-                                <h3 className="text-lg font-bold font-serif text-[#251D13] mb-3 group-hover:text-[#92764D] transition-colors">
+                                <h3 className="text-lg font-bold font-serif text-[#251D13] mb-3 group-hover:text-[#856a43] transition-colors">
                                     {step.title}
                                 </h3>
                                 <p className="text-sm text-[#251D13]/70 leading-relaxed font-sans">

@@ -26,9 +26,9 @@ export function SiteFooter() {
 
                     {/* Column 2: Taller & Hours */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
+                        <h2 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             El Taller
-                        </h4>
+                        </h2>
                         <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li className="flex items-start gap-2.5">
                                 <MapPin className="h-4 w-4 text-secondary shrink-0 mt-0.5" />
@@ -43,9 +43,9 @@ export function SiteFooter() {
 
                     {/* Column 3: Direct Contact */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
+                        <h2 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             Contacto
-                        </h4>
+                        </h2>
                         <ul className="space-y-3 text-sm opacity-80 font-sans font-normal">
                             <li>
                                 <a 
@@ -72,9 +72,9 @@ export function SiteFooter() {
 
                     {/* Column 4: Social Community */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-semibold tracking-wider uppercase text-secondary">
+                        <h2 className="text-sm font-semibold tracking-wider uppercase text-secondary">
                             Comunidad
-                        </h4>
+                        </h2>
                         <p className="text-sm opacity-80 leading-relaxed font-sans font-normal">
                             Seguí nuestro proceso de producción y enterate de nuevos ingresos.
                         </p>
@@ -93,10 +93,10 @@ export function SiteFooter() {
 
                 {/* Bottom Divider & Copyright */}
                 <div className="pt-8 border-t border-[#3E3120] flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <small className="opacity-70 text-xs text-center sm:text-left font-sans font-normal">
+                    <small className="opacity-90 text-xs text-center sm:text-left font-sans font-normal">
                         © {new Date().getFullYear()} Cueros Porteños. Todos los derechos reservados. Hecho a mano en Argentina.
                     </small>
-                    <div className="flex text-[11px] opacity-50 font-sans font-normal uppercase tracking-wider">
+                    <div className="flex text-[11px] opacity-80 font-sans font-normal uppercase tracking-wider">
                         <Link href="/admin" className="hover:text-secondary hover:underline transition-colors">
                             Admin
                         </Link>

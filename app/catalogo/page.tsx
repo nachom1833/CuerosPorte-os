@@ -85,7 +85,7 @@ export default async function CatalogPage({
                 {/* Sidebar Filters */}
                 <aside className="w-full sm:w-64 flex-shrink-0 space-y-8">
                     <div>
-                        <h3 className="font-semibold mb-4">Categorías</h3>
+                        <h2 className="font-semibold mb-4">Categorías</h2>
                         <div className="flex flex-wrap sm:flex-col gap-2">
                             <Button
                                 asChild
