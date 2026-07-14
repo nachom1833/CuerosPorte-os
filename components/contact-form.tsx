@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { UploadCloud, File, X, CheckCircle, Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { motion, AnimatePresence } from "framer-motion"
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, push, set } from "firebase/database"
 
 interface ContactFormProps {
@@ -73,7 +73,7 @@ export function ContactForm({ id }: ContactFormProps) {
         
         try {
             // Guardar en la base de datos de Firebase
-            const contactRef = ref(db, "contact_messages")
+            const contactRef = ref(getDb(), "contact_messages")
             const newContactRef = push(contactRef)
             await set(newContactRef, {
                 name,

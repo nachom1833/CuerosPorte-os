@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { LazyMap } from "./lazy-map"
 import { Reveal } from "./reveal"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -23,7 +24,7 @@ export function AboutSection() {
                                 src="/images/products/carpeta con cierre.jpeg"
                                 alt="Carpeta con cierre de cuero en taller"
                                 fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                         </Reveal>
@@ -53,7 +54,7 @@ export function AboutSection() {
                                 src="/images/products/portanotebook.jpeg"
                                 alt="Porta notebook de cuero"
                                 fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 580px"
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                         </Reveal>
@@ -87,17 +88,7 @@ export function AboutSection() {
                     </div>
                     
                     <div className="relative w-full h-[450px] rounded-2xl overflow-hidden border border-[#DDC8A6]/40 shadow-lg bg-[#F5EFE6]">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.26189912066!2d-58.50155192348512!3d-34.63937765985834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc9b04486cac7%3A0x526312f73dcf52f4!2sCueros+Porte%C3%B1os+SRL!5e0!3m2!1ses-419!2sar!5m2!1ses-419!2sar" 
-                            width="100%" 
-                            height="100%" 
-                            style={{ border: 0 }} 
-                            allowFullScreen={true} 
-                            loading="lazy" 
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="Mapa de Ubicación de Cueros Porteños en Villa Luro"
-                            className="absolute inset-0 w-full h-full"
-                        />
+                        <LazyMap />
                     </div>
                 </div>
 

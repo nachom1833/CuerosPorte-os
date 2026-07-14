@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import { cookies } from "next/headers"
-import { auth } from "@/lib/firebase"
+import { getFirebaseAuth } from "@/lib/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 
 export async function login(formData: FormData) {
@@ -11,7 +11,7 @@ export async function login(formData: FormData) {
     const password = formData.get("password") as string
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password)
+        const userCredential = await signInWithEmailAndPassword(getFirebaseAuth(), email, password)
         const token = await userCredential.user.getIdToken()
 
         const cookieStore = await cookies()

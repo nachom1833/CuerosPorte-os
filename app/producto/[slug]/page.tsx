@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get } from "firebase/database"
 import { ProductDetail } from "@/components/product-detail"
 import { notFound } from "next/navigation"
@@ -16,7 +16,7 @@ import {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params
 
-    const productsSnap = await get(ref(db, "products"))
+    const productsSnap = await get(ref(getDb(), "products"))
     const productsVal = productsSnap.val() || {}
     const products = Object.keys(productsVal).map(key => ({
         id: key,
@@ -41,7 +41,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     const { slug } = await params
 
     // Fetch product by slug
-    const productsSnap = await get(ref(db, "products"))
+    const productsSnap = await get(ref(getDb(), "products"))
     const productsVal = productsSnap.val() || {}
     const products = Object.keys(productsVal).map(key => ({
         id: key,
@@ -55,7 +55,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     }
 
     // Fetch its variants
-    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsSnap = await get(ref(getDb(), "product_variants"))
     const variantsVal = variantsSnap.val() || {}
     const variants = Object.keys(variantsVal)
         .map(key => ({

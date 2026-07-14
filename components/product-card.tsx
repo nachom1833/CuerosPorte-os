@@ -56,6 +56,7 @@ export function ProductCard({ product, variant }: ProductCardProps) {
                                 src={images[0]}
                                 alt={product.name}
                                 fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                                 className={`object-cover transition-all duration-700 ease-in-out ${
                                     images[1] 
                                         ? "group-hover:opacity-0 scale-100 group-hover:scale-105" 
@@ -68,6 +69,7 @@ export function ProductCard({ product, variant }: ProductCardProps) {
                                     src={images[1]}
                                     alt={`${product.name} - Vista Alternativa`}
                                     fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                                     className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 scale-105 group-hover:scale-100 transition-all duration-700 ease-in-out"
                                 />
                             )}

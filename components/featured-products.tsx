@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get } from "firebase/database"
 import { ProductCard } from "@/components/product-card"
 import { Button } from "@/components/ui/button"
@@ -7,7 +7,7 @@ import { Product, ProductVariant } from "@/types/database"
 
 export async function FeaturedProducts() {
     // 1. Fetch products (max 4)
-    const productsSnap = await get(ref(db, "products"))
+    const productsSnap = await get(ref(getDb(), "products"))
     const productsVal = productsSnap.val() || {}
     const products: Product[] = Object.keys(productsVal)
         .map(key => ({
@@ -18,7 +18,7 @@ export async function FeaturedProducts() {
         .slice(0, 4)
 
     // 2. Fetch active variants
-    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsSnap = await get(ref(getDb(), "product_variants"))
     const variantsVal = variantsSnap.val() || {}
     const variants: ProductVariant[] = Object.keys(variantsVal).map(key => ({
         id: key,

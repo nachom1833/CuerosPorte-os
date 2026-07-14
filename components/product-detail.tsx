@@ -148,8 +148,9 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                             >
                                 <Image
                                     src={currentImages[activeIdx]}
-                                    alt={`${product.name} vista ${activeIdx + 1}`}
+                                    alt={`Imagen de ${product.name}`}
                                     fill
+                                    sizes="(max-width: 1024px) 100vw, 600px"
                                     className="object-cover"
                                     priority
                                 />
@@ -214,6 +215,7 @@ export function ProductDetail({ product, variants }: ProductDetailProps) {
                                         src={img}
                                         alt={`Miniatura ${idx + 1}`}
                                         fill
+                                        sizes="80px"
                                         className="object-cover"
                                     />
                                 </button>

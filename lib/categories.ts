@@ -1,4 +1,4 @@
-import { db } from "./firebase"
+import { getDb } from "./firebase"
 import { ref, get, set } from "firebase/database"
 
 export interface Category {
@@ -16,7 +16,7 @@ const DEFAULT_CATEGORIES: Omit<Category, "id">[] = [
 
 export async function getCategories(): Promise<Category[]> {
     try {
-        const categoriesRef = ref(db, "categories")
+        const categoriesRef = ref(getDb(), "categories")
         const snapshot = await get(categoriesRef)
 
         if (snapshot.exists()) {
@@ -33,7 +33,7 @@ export async function getCategories(): Promise<Category[]> {
         for (let i = 0; i < DEFAULT_CATEGORIES.length; i++) {
             const catId = `cat_${i + 1}`
             const catData = DEFAULT_CATEGORIES[i]
-            await set(ref(db, `categories/${catId}`), catData)
+            await set(ref(getDb(), `categories/${catId}`), catData)
             seededCategories.push({ id: catId, ...catData })
         }
 

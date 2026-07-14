@@ -124,6 +124,7 @@ export function Hero() {
                                     src="/images/products/portafolio 3 fuelles.jpeg"
                                     alt="Desarrollo corporativo Cueros Porteños"
                                     fill
+                                    sizes="(max-width: 1024px) 80vw, 370px"
                                     className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out transition-all"
                                     priority
                                 />
@@ -135,6 +136,7 @@ export function Hero() {
                                     src="/images/products/carpeta con cierre(1).jpeg"
                                     alt="Carpeta con cierre Cueros Porteños"
                                     fill
+                                    sizes="(max-width: 1024px) 50vw, 250px"
                                     className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out transition-all"
                                 />
                             </div>

@@ -1,6 +1,6 @@
 "use server"
 
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get, push, set } from "firebase/database"
 import { revalidatePath } from "next/cache"
 import fs from "fs"
@@ -79,10 +79,10 @@ export async function importBulkProducts(items: RawImportItem[]) {
         }
 
         // 1. Obtener listados actuales de productos y variantes para validar duplicados
-        const productsSnap = await get(ref(db, "products"))
+        const productsSnap = await get(ref(getDb(), "products"))
         const productsVal = productsSnap.val() || {}
         
-        const variantsSnap = await get(ref(db, "product_variants"))
+        const variantsSnap = await get(ref(getDb(), "product_variants"))
         const variantsVal = variantsSnap.val() || {}
 
         for (const item of items) {
@@ -122,7 +122,7 @@ export async function importBulkProducts(items: RawImportItem[]) {
             if (existingProductKey) {
                 // Si existe, lo actualizamos
                 productId = existingProductKey
-                await set(ref(db, `products/${productId}`), {
+                await set(ref(getDb(), `products/${productId}`), {
                     ...productData,
                     created_at: productsVal[productId].created_at || new Date().toISOString()
                 })
@@ -130,7 +130,7 @@ export async function importBulkProducts(items: RawImportItem[]) {
                 productsVal[productId] = { ...productsVal[productId], ...productData }
             } else {
                 // Si no existe, creamos uno nuevo
-                const newRef = push(ref(db, "products"))
+                const newRef = push(ref(getDb(), "products"))
                 productId = newRef.key || ""
                 const newProduct = {
                     ...productData,
@@ -157,7 +157,7 @@ export async function importBulkProducts(items: RawImportItem[]) {
                 const matchedImages = findMatchingImages(item.Nombre, availableFiles)
 
                 if (!existingVariantKey) {
-                    const newVRef = push(ref(db, "product_variants"))
+                    const newVRef = push(ref(getDb(), "product_variants"))
                     const variantId = newVRef.key || ""
                     const newVariant = {
                         product_id: productId,
@@ -175,7 +175,7 @@ export async function importBulkProducts(items: RawImportItem[]) {
                     // Si ya existe pero no tiene imágenes asociadas, asignarle las imágenes detectadas
                     const existingVariant = variantsVal[existingVariantKey]
                     if (!existingVariant.images || existingVariant.images.length === 0) {
-                        await set(ref(db, `product_variants/${existingVariantKey}/images`), matchedImages)
+                        await set(ref(getDb(), `product_variants/${existingVariantKey}/images`), matchedImages)
                         existingVariant.images = matchedImages
                     }
                 }

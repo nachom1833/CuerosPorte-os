@@ -1,0 +1,4 @@
+# Target modern browsers to eliminate unnecessary polyfills and older ES5 code
+defaults
+not dead
+not IE 11

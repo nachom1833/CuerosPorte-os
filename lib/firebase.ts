@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getDatabase, Database } from "firebase/database";
+import { getAuth, Auth } from "firebase/auth";
+import { getStorage, FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "placeholder-api-key",
@@ -14,9 +14,29 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase (safely handles SSR environments)
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-const db = getDatabase(app, "https://cuerosportenos-35545-default-rtdb.firebaseio.com/");
-const auth = getAuth(app);
-const storage = getStorage(app);
+export const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
-export { app, db, auth, storage };
+let _db: Database;
+let _auth: Auth;
+let _storage: FirebaseStorage;
+
+export function getDb(): Database {
+  if (!_db) {
+    _db = getDatabase(app, "https://cuerosportenos-35545-default-rtdb.firebaseio.com/");
+  }
+  return _db;
+}
+
+export function getFirebaseAuth(): Auth {
+  if (!_auth) {
+    _auth = getAuth(app);
+  }
+  return _auth;
+}
+
+export function getFirebaseStorage(): FirebaseStorage {
+  if (!_storage) {
+    _storage = getStorage(app);
+  }
+  return _storage;
+}

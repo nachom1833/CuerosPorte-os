@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get } from "firebase/database"
 import { notFound } from "next/navigation"
 import { ProductForm } from "@/components/admin/product-form"
@@ -10,7 +10,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
     const { id } = await params
 
     const [productSnap, categories] = await Promise.all([
-        get(ref(db, `products/${id}`)),
+        get(ref(getDb(), `products/${id}`)),
         getCategories()
     ])
 
@@ -18,7 +18,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
 
     const product = { id: productSnap.key!, ...productSnap.val() } as Product
 
-    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsSnap = await get(ref(getDb(), "product_variants"))
     const variantsVal = variantsSnap.val() || {}
     const variants = Object.keys(variantsVal)
         .map(key => ({

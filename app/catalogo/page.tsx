@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get } from "firebase/database"
 import { ProductCard } from "@/components/product-card"
 import { Separator } from "@/components/ui/separator"
@@ -23,7 +23,7 @@ export default async function CatalogPage({
     const params = await searchParams; // Await params in Next.js 15
     const category = params.category;
 
-    const productsSnap = await get(ref(db, "products"))
+    const productsSnap = await get(ref(getDb(), "products"))
     const productsVal = productsSnap.val() || {}
     let rawProducts = Object.keys(productsVal)
         .map(key => ({
@@ -36,7 +36,7 @@ export default async function CatalogPage({
         rawProducts = rawProducts.filter(p => p.category === category)
     }
 
-    const variantsSnap = await get(ref(db, "product_variants"))
+    const variantsSnap = await get(ref(getDb(), "product_variants"))
     const variantsVal = variantsSnap.val() || {}
     const rawVariants = Object.keys(variantsVal).map(key => ({
         id: key,

@@ -1,4 +1,4 @@
-import { db } from "@/lib/firebase"
+import { getDb } from "@/lib/firebase"
 import { ref, get } from "firebase/database"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -8,8 +8,8 @@ import { Product } from "@/types/database"
 
 export default async function AdminDashboard() {
     const [productsSnap, variantsSnap] = await Promise.all([
-        get(ref(db, "products")),
-        get(ref(db, "product_variants"))
+        get(ref(getDb(), "products")),
+        get(ref(getDb(), "product_variants"))
     ])
 
     const productsVal = productsSnap.val() || {}
