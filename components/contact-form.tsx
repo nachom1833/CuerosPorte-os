@@ -193,6 +193,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                             <Input
                                                 id="email"
                                                 type="email"
+                                                autoComplete="email"
                                                 required
                                                 placeholder="Ej. jperez@empresa.com"
                                                 value={email}
@@ -207,6 +208,7 @@ export function ContactForm({ id }: ContactFormProps) {
                                             <Input
                                                 id="phone"
                                                 type="tel"
+                                                autoComplete="tel"
                                                 required
                                                 placeholder="Ej. +54 11 1234 5678"
                                                 value={phone}

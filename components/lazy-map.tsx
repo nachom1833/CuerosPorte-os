@@ -31,7 +31,7 @@ export function LazyMap() {
         <div ref={containerRef} className="relative w-full h-full min-h-[450px] bg-[#F5EFE6]/50 flex flex-col items-center justify-center transition-all duration-500">
             {shouldLoad ? (
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.26189912066!2d-58.50155192348512!3d-34.63937765985834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc9b04486cac7%3A0x526312f73dcf52f4!2sCueros+Porte%C3%B1os+SRL!5e0!3m2!1ses-419!2sar!5m2!1ses-419!2sar" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.26189912066!2d-58.50155192348512!3d-34.63937765985834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc9b04486cac7%3A0x526312f73dcf52f4!2sCueros+Porte%C3%B1os+SRL!5e0!3m2!1ses-419!2sar!5m2!1ses-419!2sar" 
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 

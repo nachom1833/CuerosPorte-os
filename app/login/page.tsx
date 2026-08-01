@@ -31,11 +31,11 @@ export default async function LoginPage({
                         )}
                         <div className="grid gap-2">
                             <label htmlFor="email">Email</label>
-                            <Input id="email" name="email" type="email" placeholder="m@example.com" required />
+                            <Input id="email" name="email" type="email" autoComplete="email" placeholder="m@example.com" required />
                         </div>
                         <div className="grid gap-2">
                             <label htmlFor="password">Password</label>
-                            <Input id="password" name="password" type="password" required />
+                            <Input id="password" name="password" type="password" autoComplete="current-password" required />
                         </div>
                     </CardContent>
                     <CardFooter>
